@@ -17,12 +17,14 @@ import java.util.LinkedList;
 
 public class DrawView extends View {
     Paint paint = new Paint();
+    int countRectClick;
     LinkedList<Rectangle> rectangles;
 
     public DrawView(Context context) {
         super(context);
         rectangles = new LinkedList<>();
         createBoard();
+        countRectClick = 0;
     }
 
     @Override
@@ -84,7 +86,11 @@ public class DrawView extends View {
                 Log.v("asdasd", "Touching down!");
                 for(Rectangle rect : rectangles){
                     if(rect.contains(touchX, touchY)){
-                        rect.setColor(Color.CYAN);
+                        countRectClick++;
+                        if(countRectClick%2 ==1)
+                            rect.setColor(Color.CYAN);
+                        else
+                            rect.setColor(Color.MAGENTA);
                         invalidate();
                         //int color = Color.RED;
                         //paint.setColor(color);
