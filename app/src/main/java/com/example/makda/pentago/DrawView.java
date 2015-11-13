@@ -4,11 +4,13 @@ package com.example.makda.pentago;
  * Created by Makda on 2015-11-12.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.LinkedList;
@@ -55,5 +57,36 @@ public class DrawView extends View {
             }
             top += GRID_SIZE + 5;
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int touchX = Math.round(event.getX());
+        int touchY = Math.round(event.getY());
+        int e = event.getAction();
+        switch(e){
+            case MotionEvent.ACTION_DOWN:
+                Log.v("asdasd", "Touching down!");
+                for(Rect rect : rectangles){
+                    if(rect.contains(touchX, touchY)){
+                        //int color = Color.RED;
+                        //paint.setColor(color);
+                        //canvas.drawRect(rects, paint);
+                        TODO:
+                            //problem! do own class rectangle with canvas
+                        Log.v("asdasd", "Touched Rectangle, start activity");
+                        //Intent i = new Intent(<your activity info>);
+                        //startActivity(i);
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.v("asdasd", "Touching up!");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.v("asdasd", "Sliding your finger around on the screen.");
+                break;
+        }
+        return true;
     }
 }
