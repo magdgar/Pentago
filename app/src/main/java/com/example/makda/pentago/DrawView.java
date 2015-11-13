@@ -8,13 +8,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
+
+import java.util.LinkedList;
 
 public class DrawView extends View {
     Paint paint = new Paint();
+    LinkedList<Rect> rectangles;
 
     public DrawView(Context context) {
         super(context);
+        rectangles = new LinkedList<>();
     }
 
     @Override
@@ -22,7 +27,7 @@ public class DrawView extends View {
         paint.setColor(Color.BLACK);
         displayBoard(canvas);
     }
-    
+
     public void displayBoard(Canvas canvas){
         for(int i=0;i<2;i++)
             for(int j=0;j<2;j++){
@@ -43,7 +48,9 @@ public class DrawView extends View {
             for(int j = 0; j < GRID_HEIGHT; j++) {
                 right = left + GRID_SIZE;
                 bottom = top + GRID_SIZE;
-                canvas.drawRect(new Rect(left, top, right, bottom), paint);
+                Rect rect = new Rect(left, top, right, bottom);
+                rectangles.push(rect);
+                canvas.drawRect(rect, paint);
                 left += GRID_SIZE + 5;
             }
             top += GRID_SIZE + 5;
