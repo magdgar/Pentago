@@ -63,7 +63,6 @@ public class DrawView extends View {
                 Rect rect = new Rect(left, top, right, bottom);
                 Rectangle r = new Rectangle(rect);
                 rectangles.push(r);
-                //canvas.drawRect(rect, r.getPaint());
                 left += GRID_SIZE + 5;
             }
             top += GRID_SIZE + 5;
@@ -83,7 +82,6 @@ public class DrawView extends View {
         int e = event.getAction();
         switch(e){
             case MotionEvent.ACTION_DOWN:
-                Log.v("asdasd", "Touching down!");
                 for(Rectangle rect : rectangles){
                     if(rect.contains(touchX, touchY)){
                         countRectClick++;
@@ -92,19 +90,11 @@ public class DrawView extends View {
                         else
                             rect.setColor(Color.MAGENTA);
                         invalidate();
-                        //int color = Color.RED;
-                        //paint.setColor(color);
-                        //canvas.drawRect(rects, paint);
                         TODO:
                         //problem! do own class rectangle with canvas
                         Log.v("asdasd", "Touched Rectangle, start activity");
-                        //Intent i = new Intent(<your activity info>);
-                        //startActivity(i);
                     }
                 }
-                break;
-            case MotionEvent.ACTION_UP:
-                Log.v("asdasd", "Touching up!");
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.v("asdasd", "Sliding your finger around on the screen.");

@@ -7,13 +7,11 @@ import android.graphics.Rect;
 public class Rectangle {
     Rect rect;
     Paint paint;
-    //int color;
 
     public Rectangle(Rect rect){
         this.rect = rect;
         paint = new Paint();
         paint.setColor(Color.BLACK);
-        //color = Color.BLACK;
     }
 
     public void setColor(int color){
