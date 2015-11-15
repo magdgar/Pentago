@@ -7,9 +7,11 @@ import android.graphics.Rect;
 public class Rectangle {
     Rect rect;
     Paint paint;
+    boolean isSelected;
 
     public Rectangle(Rect rect){
         this.rect = rect;
+        isSelected = false;
         paint = new Paint();
         paint.setColor(Color.BLACK);
     }

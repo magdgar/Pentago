@@ -84,11 +84,14 @@ public class DrawView extends View {
             case MotionEvent.ACTION_DOWN:
                 for(Rectangle rect : rectangles){
                     if(rect.contains(touchX, touchY)){
-                        countRectClick++;
-                        if(countRectClick%2 ==1)
-                            rect.setColor(Color.CYAN);
-                        else
-                            rect.setColor(Color.MAGENTA);
+                        if(!rect.isSelected) {
+                            countRectClick++;
+                            if (countRectClick % 2 == 1)
+                                rect.setColor(Color.CYAN);
+                            else
+                                rect.setColor(Color.MAGENTA);
+                        }
+                        rect.isSelected = true;
                         invalidate();
                         TODO:
                         //problem! do own class rectangle with canvas
