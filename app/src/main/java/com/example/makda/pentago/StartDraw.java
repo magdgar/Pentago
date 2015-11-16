@@ -6,6 +6,7 @@ package com.example.makda.pentago;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
 
 public class StartDraw extends Activity {
     DrawView drawView;
@@ -16,6 +17,9 @@ public class StartDraw extends Activity {
 
         drawView = new DrawView(this);
         drawView.setBackgroundColor(Color.WHITE);
+        setContentView(drawView);
+
+        //drawView.setLayoutParams(new ViewGroup.LayoutParams(100, 100));
         setContentView(drawView);
 
     }
