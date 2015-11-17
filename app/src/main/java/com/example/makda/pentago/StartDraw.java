@@ -19,7 +19,6 @@ public class StartDraw extends Activity {
         drawView.setBackgroundColor(Color.WHITE);
         setContentView(drawView);
 
-        //drawView.setLayoutParams(new ViewGroup.LayoutParams(100, 100));
         setContentView(drawView);
 
     }

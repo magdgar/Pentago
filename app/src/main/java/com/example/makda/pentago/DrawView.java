@@ -10,12 +10,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.LinkedList;
 
-public class DrawView extends View {
+public class DrawView extends ViewGroup {
     Paint paint = new Paint();
     Context context;
     int countRectClick;
@@ -25,28 +27,38 @@ public class DrawView extends View {
     public DrawView(Context context) {
         super(context);
         this.context = context;
-        rectangles = new LinkedList<>();
-        segments = new LinkedList<>();
         createBoard();
         countRectClick = 0;
     }
 
-    @Override
-    public void onDraw(Canvas canvas) {
-        paint.setColor(Color.BLACK);
-        for(RectangleSegmentView s: segments)
-            s.display(canvas);
-    }
-
     public void createBoard(){
-        for(int i=0;i<2;i++)
-            for(int j=0;j<2;j++){
-                segments.push(new RectangleSegmentView(context, 35 + i * 215, 185 + j * 215));
-            }
-        for(RectangleSegmentView s : segments){
+        rectangles = new LinkedList<>();
+        segments = new LinkedList<>();
+
+        for(int j=0;j<4;j++)
+            segments.push(new RectangleSegmentView(context));
+
+        for(RectangleSegmentView s : segments) {
+            addView(s);
             rectangles.addAll(s.rectangles);
         }
     }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
+        segments.get(0).layout(0, 0, r / 2, b / 2);
+        segments.get(1).layout(r / 2, 0, r, b / 2);
+        segments.get(2).layout(0, b / 2, r / 2, b);
+        segments.get(3).layout(r / 2, b / 2, r, b);
+    }
+
+//    @Override
+//    public void onDraw(Canvas canvas) {
+//        paint.setColor(Color.BLACK);
+//        for(RectangleSegmentView s: segments)
+//            s.display(canvas);
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

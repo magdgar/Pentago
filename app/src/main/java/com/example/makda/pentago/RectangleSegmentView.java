@@ -18,10 +18,12 @@ public class RectangleSegmentView extends View {
     int  spaceFromleft;
     int spaceFromTop;
 
-    public RectangleSegmentView(Context context, int left, int top) {
+    public RectangleSegmentView(Context context) {
         super(context);
-        spaceFromleft = left;
-        spaceFromTop = top;
+        //spaceFromleft = left;
+        //spaceFromTop = top;
+        spaceFromleft = 0;
+        spaceFromTop = 0;
 
         rectangles = new LinkedList<>();
         createRectangles();
@@ -30,6 +32,7 @@ public class RectangleSegmentView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         //paint.setColor(Color.BLACK);
+        super.onDraw(canvas);
         display(canvas);
     }
 
