@@ -22,8 +22,8 @@ public class RectangleSegmentView extends View {
         super(context);
         //spaceFromleft = left;
         //spaceFromTop = top;
-        spaceFromleft = 0;
-        spaceFromTop = 0;
+        spaceFromleft = 25;
+        spaceFromTop = 100;
 
         rectangles = new LinkedList<>();
         createRectangles();
