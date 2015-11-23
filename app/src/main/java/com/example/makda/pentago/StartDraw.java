@@ -1,25 +1,18 @@
 package com.example.makda.pentago;
 
-/**
- * Created by Makda on 2015-11-12.
- */
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ViewGroup;
 
 public class StartDraw extends Activity {
-    DrawView drawView;
+    BoardView bv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        drawView = new DrawView(this);
-        drawView.setBackgroundColor(Color.WHITE);
-        setContentView(drawView);
-
-        setContentView(drawView);
-
+        bv = new BoardView(this);
+        bv.setBackgroundColor(Color.WHITE);
+        setContentView(bv);
     }
 }

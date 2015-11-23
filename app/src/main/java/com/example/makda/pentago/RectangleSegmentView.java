@@ -2,67 +2,64 @@ package com.example.makda.pentago;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Rect;
+import android.support.v4.util.Pair;
 import android.view.View;
-
-import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by Makda on 2015-11-16.
- */
 public class RectangleSegmentView extends View {
 
     LinkedList<Rectangle> rectangles;
-    int  spaceFromleft;
-    int spaceFromTop;
+    Context context;
+    Pair startParams;
 
-    public RectangleSegmentView(Context context) {
+    public RectangleSegmentView(Context context, Pair startParams) {
+        //startParam.first ->spaceFromLeft, .second ->spaceFromTop
         super(context);
-        //spaceFromleft = left;
-        //spaceFromTop = top;
-        spaceFromleft = 25;
-        spaceFromTop = 100;
-
         rectangles = new LinkedList<>();
-        createRectangles();
+
+        this.context = context;
+        this.startParams = startParams;
+        createGrid();
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        //paint.setColor(Color.BLACK);
         super.onDraw(canvas);
-        display(canvas);
+        displayGrid(canvas);
     }
 
-     public void createRectangles(){
-        int GRID_WIDTH = 3;
-        int GRID_HEIGHT = 3;
-        int GRID_SIZE = 60;
-        int top = spaceFromTop;
-        // int top = 0;
+    public void draw(Canvas canvas){
+        displayGrid(canvas);
+    }
+
+    public void createGrid(){
+        int gridWidth = 3;
+        int gridHeight = 3;
+        int rectSize = 60;
+        int spacesBetweenRectangles = 5;
+        int top = (int) startParams.second;
         int left;
         int right;
         int bottom;
 
-        for(int i = 0; i < GRID_WIDTH; i++) {
-            left = spaceFromleft;
-            //left = 0;
-            for(int j = 0; j < GRID_HEIGHT; j++) {
-                right = left + GRID_SIZE;
-                bottom = top + GRID_SIZE;
+        for(int i = 0; i < gridWidth; i++) {
+            left = (int) startParams.first;
+            for(int j = 0; j < gridHeight; j++) {
+                right = left + rectSize;
+                bottom = top + rectSize;
                 Rect rect = new Rect(left, top, right, bottom);
-                Rectangle r = new Rectangle(rect);
+                Rectangle r = new Rectangle(this.context, rect);
                 rectangles.push(r);
-                left += GRID_SIZE + 5;
+                left += rectSize + spacesBetweenRectangles;
             }
-            top += GRID_SIZE + 5;
+            top += rectSize + spacesBetweenRectangles;
         }
     }
-    public void display(Canvas canvas){
+
+    public void displayGrid(Canvas canvas){
         for(Rectangle rect : rectangles){
-            canvas.drawRect(rect.getRect(), rect.getPaint());
+            rect.draw(canvas);
         }
     }
 }

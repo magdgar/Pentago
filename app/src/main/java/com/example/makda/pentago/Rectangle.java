@@ -1,23 +1,31 @@
 package com.example.makda.pentago;
 
+import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.support.v4.util.Pair;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class Rectangle {
+public class Rectangle extends View{
+
     Rect rect;
-    Paint paint;
+    private Paint paint;
     boolean isSelected;
 
-    public Rectangle(Rect rect){
+    public Rectangle(Context context, Rect rect){
+        super(context);
         this.rect = rect;
-        isSelected = false;
         paint = new Paint();
         paint.setColor(Color.BLACK);
+        isSelected = false;
     }
 
-    public void setColor(int color){
-        paint.setColor(color);
+    public void draw(Canvas canvas){
+        canvas.drawRect(this.rect, paint);
     }
 
     public boolean contains(int x, int y){
@@ -27,11 +35,7 @@ public class Rectangle {
         return false;
     }
 
-    public Paint getPaint() {
-        return paint;
-    }
-
-    public Rect getRect() {
-        return rect;
+    public void setColor(int color){
+        paint.setColor(color);
     }
 }
