@@ -68,7 +68,8 @@ public class BoardView extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 touchX = Math.round(event.getX());
                 touchY = Math.round(event.getY());
-                checkIfRectangleMatched(touchX, touchY);
+                if(!wasPreviousActionClick)
+                    checkIfRectangleMatched(touchX, touchY);
                 break;
 
             case MotionEvent.ACTION_MOVE:
