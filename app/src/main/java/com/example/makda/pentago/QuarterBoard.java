@@ -26,10 +26,10 @@ public class QuarterBoard extends View {
     }
 
     public void createRectangles(){
-        int width = Utils.getWidth(getContext());
+        int width = Utils.getScreenWidth(getContext())/2;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
-                Rectangle rectangle = new Rectangle(new Rect(i * (width)/ 3 +2, k * (width)/ 3 +2, (i + 1) * (width) / 3-2, (k + 1) * (width)/ 3-2));
+                Rectangle rectangle = new Rectangle(new Rect(i * (width)/ 3 +1 , k * (width)/ 3 +1, (i + 1) * (width) / 3 -1 , (k + 1) * (width)/ 3-1));
                 rectangles.add(rectangle);
             }
         }
