@@ -54,10 +54,10 @@ public class BoardView extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int x = Utils.getScreenWidth(getContext());
-        quarterBoards[0].layout(0, 145, r / 2 -2, b / 2);
-        quarterBoards[1].layout(r / 2, 145, r - 2, b / 2);
-        quarterBoards[2].layout(0, b / 2, r / 2 -2, b - 145);
-        quarterBoards[3].layout(r / 2, b / 2, r - 2, b - 145);
+        quarterBoards[0].layout(0, 145, r / 2, b / 2 );
+        quarterBoards[1].layout(r / 2, 145, r , b / 2 );
+        quarterBoards[2].layout(0, b / 2, r / 2 , b - 145);
+        quarterBoards[3].layout(r / 2, b / 2, r, b - 145);
     }
 
     @Override
