@@ -111,9 +111,10 @@ public class AIBoardView extends ViewGroup {
                 changeRectColor(rect);
                 rect.isSelected = true;
                 quarterBoard.invalidate();
+                wasPreviousActionClick = true;
             }
         }
-        wasPreviousActionClick = true;
+
     }
 
     private QuarterBoard getClickedQuarterBoard(int touchX, int touchY){
