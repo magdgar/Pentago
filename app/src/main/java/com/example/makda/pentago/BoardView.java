@@ -78,7 +78,7 @@ public class BoardView extends ViewGroup {
                 int rotation;
                 if(wasPreviousActionClick)
                     if( x != touchX) {
-                        Log.d("sth", String.valueOf(x));
+                        quarterBoard = getClickedQuarterBoard(x, Math.round(event.getY()));
                         rotation = (x - touchX > 0) ? 90 : -90;
                         quarterBoard.setRotation(quarterBoard.getRotation() + rotation);
                         quarterBoard.invalidate();
