@@ -84,8 +84,8 @@ public class AIBoardView extends ViewGroup {
                         quarterBoard.setRotation(quarterBoard.getRotation() + rotation);
                         quarterBoard.invalidate();
                         wasPreviousActionClick = false;
+                        makeAImove();
                     }
-                makeAImove();
                 break;
         }
         return true;
