@@ -20,5 +20,9 @@
             android:name=".StartDraw"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".StartDrawAIGame"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 </manifest>

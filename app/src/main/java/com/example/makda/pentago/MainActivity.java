@@ -19,4 +19,9 @@ public class MainActivity extends Activity{
         Intent resIntent = new Intent(this, StartDraw.class);
         startActivity(resIntent);
     }
+
+    public void startAIGame(View view){
+        Intent resIntent = new Intent(this, StartDrawAIGame.class);
+        startActivity(resIntent);
+    }
 }

@@ -11,5 +11,6 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="multi player"/>
+        android:text="AI player"
+        android:onClick="startAIGame"/>
 </LinearLayout>
