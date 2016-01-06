@@ -85,7 +85,7 @@ public class AIBoardView extends ViewGroup {
                         quarterBoard.invalidate();
                         wasPreviousActionClick = false;
                     }
-                //makeAImove();
+                makeAImove();
                 break;
         }
         return true;
@@ -98,6 +98,12 @@ public class AIBoardView extends ViewGroup {
             int y = rand.nextInt(Utils.getScreenHeight(getContext()));
             markRectangleIfMatched(x, y);
         }
+        quarterBoard = quarterBoards[rand.nextInt(4)];
+
+        int rotation = (rand.nextInt(2) - 1 > 0) ? 90 : -90;
+        quarterBoard.setRotation(quarterBoard.getRotation() + rotation);
+        quarterBoard.invalidate();
+        wasPreviousActionClick = false;
     }
 
     private void markRectangleIfMatched(int touchX, int touchY){
