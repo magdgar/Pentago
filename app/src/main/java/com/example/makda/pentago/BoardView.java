@@ -96,8 +96,6 @@ public class BoardView extends ViewGroup {
         for(Rectangle rect :quarterBoard.rectangles) {
             if (rect.contains(touchX, touchY)) {
                 int properIndex = permutations[quarterBoard.getPermutationID()][quarterBoard.rectangles.indexOf(rect)];
-                Log.d("index", String.valueOf(quarterBoard.rectangles.indexOf(rect)));
-                Log.d("permutation id", String.valueOf(quarterBoard.getPermutationID()));
                 rect = quarterBoard.rectangles.get(properIndex);
                 changeRectColor(rect);
                 rect.isSelected = true;

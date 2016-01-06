@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
+import java.util.Random;
+
 /**
  * Created by Makda on 2016-01-06.
  */
@@ -67,8 +69,9 @@ public class AIBoardView extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 touchX = Math.round(event.getX());
                 touchY = Math.round(event.getY());
+                //TODO fix that empty space can be clicked
                 if(!wasPreviousActionClick)
-                    checkIfRectangleMatched(touchX, touchY);
+                    markRectangleIfMatched(touchX, touchY);
                 break;
 
             case MotionEvent.ACTION_MOVE:
@@ -82,20 +85,28 @@ public class AIBoardView extends ViewGroup {
                         quarterBoard.invalidate();
                         wasPreviousActionClick = false;
                     }
+                //makeAImove();
                 break;
         }
         return true;
     }
 
-    private void checkIfRectangleMatched(int touchX, int touchY){
+    private void makeAImove(){
+        Random rand =  new Random();
+        while( ! wasPreviousActionClick ) {
+            int x = rand.nextInt(Utils.getScreenWidth(getContext()));
+            int y = rand.nextInt(Utils.getScreenHeight(getContext()));
+            markRectangleIfMatched(x, y);
+        }
+    }
+
+    private void markRectangleIfMatched(int touchX, int touchY){
         quarterBoard = getClickedQuarterBoard(touchX, touchY);
         touchY -= quarterBoard.getTop();
         touchX -= quarterBoard.getLeft();
         for(Rectangle rect :quarterBoard.rectangles) {
             if (rect.contains(touchX, touchY)) {
                 int properIndex = permutations[quarterBoard.getPermutationID()][quarterBoard.rectangles.indexOf(rect)];
-                Log.d("index", String.valueOf(quarterBoard.rectangles.indexOf(rect)));
-                Log.d("permutation id", String.valueOf(quarterBoard.getPermutationID()));
                 rect = quarterBoard.rectangles.get(properIndex);
                 changeRectColor(rect);
                 rect.isSelected = true;
