@@ -3,8 +3,8 @@ package com.example.makda.pentago;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
+
+import com.example.makda.pentago.boards.BoardView;
 
 public class StartDraw extends Activity {
     BoardView bv;

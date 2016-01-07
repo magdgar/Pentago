@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.example.makda.pentago.boards.AIBoardView;
+
 /**
  * Created by Makda on 2016-01-06.
  */
