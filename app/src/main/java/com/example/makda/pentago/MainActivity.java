@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Random;
+
 /**
  * Created by Makda on 2016-01-05.
  */

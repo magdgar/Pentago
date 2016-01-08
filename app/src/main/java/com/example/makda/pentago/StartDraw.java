@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.example.makda.pentago.boards.BoardView;
+import com.example.makda.pentago.boards.square.BoardView;
 
 public class StartDraw extends Activity {
     BoardView bv;

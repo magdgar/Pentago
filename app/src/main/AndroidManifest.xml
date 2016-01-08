@@ -28,5 +28,9 @@
             android:name=".StartDrawAIGame"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name=".boards.triangle.TriangleActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 </manifest>
