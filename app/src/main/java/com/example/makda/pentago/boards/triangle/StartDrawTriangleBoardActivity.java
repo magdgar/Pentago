@@ -1,8 +1,10 @@
 package com.example.makda.pentago.boards.triangle;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ViewGroup;
 
 import com.example.makda.pentago.boards.square.BoardView;
 
@@ -18,6 +20,8 @@ public class StartDrawTriangleBoardActivity extends Activity {
 
         ts = new TriangleSegment(this);
         ts.setBackgroundColor(Color.WHITE);
+        // chyba dobry kierunek ale nie dziala:(
+        ts.setLayoutParams(new ViewGroup.LayoutParams(150, 150));
         setContentView(ts);
     }
 
