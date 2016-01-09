@@ -27,7 +27,7 @@ public class SquareSegmentView extends View {
     }
 
     public void createRectangles(){
-        int width = Utils.getScreenWidth(getContext())/2;
+        int width = Utils.getScreenWidth(getContext())/2 -6;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
                 Square square = new Square(new Rect(i * (width)/ 3 +1 , k * (width)/ 3 +1, (i + 1) * (width) / 3 -1 , (k + 1) * (width)/ 3-1));

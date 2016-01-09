@@ -13,18 +13,16 @@ import java.util.Random;
 /**
  * Created by Makda on 2016-01-06.
  */
-public class AIBoardView extends ViewGroup {
+public class AIBoardView extends BoardView{
     private SquareSegmentView[] squareSegmentViews;
     private int[][] permutations;
     SquareSegmentView squareSegmentView;
     private int countRectClick;
     private boolean wasPreviousActionClick;
-    Context context;
     int touchX;
 
     public AIBoardView(Context context) {
         super(context);
-        this.context = context;
         addQuaterBoards();
         squareSegmentView = getClickedQuarterBoard(0, 0);
         createPermutation();
@@ -56,13 +54,13 @@ public class AIBoardView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int width = Utils.getScreenWidth(context);
-        int height = Utils.getScreenHeight(context);
+        int width = r-l;
+        int height = b-t;
         int spaceFromTop = (height - width)/2;
-        squareSegmentViews[0].layout(0, spaceFromTop - 5, r / 2, b / 2 -5);
-        squareSegmentViews[1].layout(r / 2, spaceFromTop - 5, r, b / 2 -5);
-        squareSegmentViews[2].layout(0, b / 2, r / 2, b - spaceFromTop);
-        squareSegmentViews[3].layout(r / 2, b / 2, r, b - spaceFromTop);
+        squareSegmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width/2 -5);
+        squareSegmentViews[1].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width/2 -5);
+        squareSegmentViews[2].layout(0, spaceFromTop + width/2, r / 2, spaceFromTop + width);
+        squareSegmentViews[3].layout(r / 2,spaceFromTop + width/2, r, spaceFromTop + width);
     }
 
     @Override
