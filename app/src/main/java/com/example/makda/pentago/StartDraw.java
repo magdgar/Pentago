@@ -12,10 +12,7 @@ public class StartDraw extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        bv = new BoardView(this);
-        bv.setBackgroundColor(Color.WHITE);
-        setContentView(bv);
+        setContentView(R.layout.square_board_layout);
     }
 
     @Override
