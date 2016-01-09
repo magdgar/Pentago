@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.makda.pentago.boards.triangle.StartDrawTriangleBoardActivity;
+import com.example.makda.pentago.boards.triangle.triangle.OpenGLES20Activity;
 
 public class ShapeChooseActivity extends Activity{
 
@@ -21,7 +21,7 @@ public class ShapeChooseActivity extends Activity{
     }
 
     public void startTriangleGame(View view){
-        Intent resIntent = new Intent(this, StartDrawTriangleBoardActivity.class);
+        Intent resIntent = new Intent(this, OpenGLES20Activity.class);
         startActivity(resIntent);
     }
 }

@@ -1,27 +1,23 @@
 package com.example.makda.pentago.boards.triangle;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ViewGroup;
-
-import com.example.makda.pentago.boards.square.BoardView;
 
 /**
  * Created by Makda on 2016-01-08.
  */
 public class StartDrawTriangleBoardActivity extends Activity {
-    TriangleSegment ts;
+    GroupedTriangleSegments ts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ts = new TriangleSegment(this);
+        ts = new GroupedTriangleSegments(this);
         ts.setBackgroundColor(Color.WHITE);
         // chyba dobry kierunek ale nie dziala:(
-        ts.setLayoutParams(new ViewGroup.LayoutParams(150, 150));
+        //ts.setLayoutParams(new ViewGroup.LayoutParams(250, 150));
         setContentView(ts);
     }
 

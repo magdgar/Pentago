@@ -32,5 +32,9 @@
             android:name=".boards.triangle.StartDrawTriangleBoardActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name=".boards.triangle.triangle.OpenGLES20Activity"
+            android:label="Pentago">
+
+        </activity>
     </application>
 </manifest>
