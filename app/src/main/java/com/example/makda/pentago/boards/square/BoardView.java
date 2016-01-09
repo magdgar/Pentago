@@ -6,16 +6,20 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
+import com.example.makda.pentago.Utils;
+
 public class BoardView extends ViewGroup {
     private SquareSegmentView[] squareSegmentViews;
     private int[][] permutations;
     SquareSegmentView squareSegmentView;
     private int countRectClick;
     private boolean wasPreviousActionClick;
+    Context context;
     int touchX;
 
     public BoardView(Context context) {
         super(context);
+        this.context = context;
         addQuaterBoards();
         squareSegmentView = getClickedQuarterBoard(0, 0);
         createPermutation();
@@ -47,10 +51,13 @@ public class BoardView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        squareSegmentViews[0].layout(0, 145, r / 2, b / 2 );
-        squareSegmentViews[1].layout(r / 2, 145, r , b / 2 );
-        squareSegmentViews[2].layout(0, b / 2, r / 2 , b - 145);
-        squareSegmentViews[3].layout(r / 2, b / 2, r, b - 145);
+        int width = Utils.getScreenWidth(context);
+        int height = Utils.getScreenHeight(context);
+        int spaceFromTop = (height - width)/2;
+        squareSegmentViews[0].layout(0, spaceFromTop -5, r / 2, b / 2 -5);
+        squareSegmentViews[1].layout(r / 2, spaceFromTop -5, r , b / 2 -5);
+        squareSegmentViews[2].layout(0, b / 2, r / 2 , b - spaceFromTop);
+        squareSegmentViews[3].layout(r / 2, b / 2, r, b - spaceFromTop);
     }
 
     @Override
