@@ -4,13 +4,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class Rectangle{
+public class Square {
 
     Rect rect;
     Paint paint;
     boolean isSelected;
 
-    public Rectangle(Rect rect){
+    public Square(Rect rect){
         this.rect = rect;
         paint = new Paint();
         paint.setColor(Color.GRAY);

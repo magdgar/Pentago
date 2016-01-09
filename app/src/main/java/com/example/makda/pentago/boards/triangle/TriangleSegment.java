@@ -1,12 +1,7 @@
 package com.example.makda.pentago.boards.triangle;
 
 import android.content.Context;
-import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.makda.pentago.boards.square.QuarterBoard;
-
-import static android.R.color.holo_red_dark;
 
 public class TriangleSegment extends ViewGroup {
     TriangleView triangles[];

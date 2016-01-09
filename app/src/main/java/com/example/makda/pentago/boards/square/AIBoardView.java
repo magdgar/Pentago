@@ -7,8 +7,6 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 
 import com.example.makda.pentago.Utils;
-import com.example.makda.pentago.boards.square.QuarterBoard;
-import com.example.makda.pentago.boards.square.Rectangle;
 
 import java.util.Random;
 
@@ -16,9 +14,9 @@ import java.util.Random;
  * Created by Makda on 2016-01-06.
  */
 public class AIBoardView extends ViewGroup {
-    private QuarterBoard[] quarterBoards;
+    private SquareSegmentView[] squareSegmentViews;
     private int[][] permutations;
-    QuarterBoard quarterBoard;
+    SquareSegmentView squareSegmentView;
     private int countRectClick;
     private boolean wasPreviousActionClick;
     int touchX;
@@ -26,7 +24,7 @@ public class AIBoardView extends ViewGroup {
     public AIBoardView(Context context) {
         super(context);
         addQuaterBoards();
-        quarterBoard = getClickedQuarterBoard(0, 0);
+        squareSegmentView = getClickedQuarterBoard(0, 0);
         createPermutation();
         wasPreviousActionClick = false;
         countRectClick = 0;
@@ -40,10 +38,10 @@ public class AIBoardView extends ViewGroup {
     }
 
     private void addQuaterBoards(){
-        quarterBoards = new QuarterBoard[]{new QuarterBoard(getContext()), new QuarterBoard(getContext()),
-                new QuarterBoard(getContext()), new QuarterBoard(getContext())};
-        for(QuarterBoard quarterBoard : quarterBoards)
-            addView(quarterBoard);
+        squareSegmentViews = new SquareSegmentView[]{new SquareSegmentView(getContext()), new SquareSegmentView(getContext()),
+                new SquareSegmentView(getContext()), new SquareSegmentView(getContext())};
+        for(SquareSegmentView squareSegmentView : squareSegmentViews)
+            addView(squareSegmentView);
     }
 
     private void createPermutation(){
@@ -56,10 +54,10 @@ public class AIBoardView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        quarterBoards[0].layout(0, 145, r / 2, b / 2 );
-        quarterBoards[1].layout(r / 2, 145, r, b / 2);
-        quarterBoards[2].layout(0, b / 2, r / 2, b - 145);
-        quarterBoards[3].layout(r / 2, b / 2, r, b - 145);
+        squareSegmentViews[0].layout(0, 145, r / 2, b / 2 );
+        squareSegmentViews[1].layout(r / 2, 145, r, b / 2);
+        squareSegmentViews[2].layout(0, b / 2, r / 2, b - 145);
+        squareSegmentViews[3].layout(r / 2, b / 2, r, b - 145);
     }
 
     @Override
@@ -81,10 +79,10 @@ public class AIBoardView extends ViewGroup {
                 int rotation;
                 if(wasPreviousActionClick)
                     if( x != touchX) {
-                        quarterBoard = getClickedQuarterBoard(x, Math.round(event.getY()));
+                        squareSegmentView = getClickedQuarterBoard(x, Math.round(event.getY()));
                         rotation = (x - touchX > 0) ? 90 : -90;
-                        quarterBoard.setRotation(quarterBoard.getRotation() + rotation);
-                        quarterBoard.invalidate();
+                        squareSegmentView.setRotation(squareSegmentView.getRotation() + rotation);
+                        squareSegmentView.invalidate();
                         wasPreviousActionClick = false;
                         makeAImove();
                     }
@@ -100,39 +98,39 @@ public class AIBoardView extends ViewGroup {
             int y = rand.nextInt(Utils.getScreenHeight(getContext()));
             markRectangleIfMatched(x, y);
         }
-        quarterBoard = quarterBoards[rand.nextInt(4)];
+        squareSegmentView = squareSegmentViews[rand.nextInt(4)];
 
         int rotation = (rand.nextInt(2) - 1 > 0) ? 90 : -90;
-        quarterBoard.setRotation(quarterBoard.getRotation() + rotation);
-        quarterBoard.invalidate();
+        squareSegmentView.setRotation(squareSegmentView.getRotation() + rotation);
+        squareSegmentView.invalidate();
         wasPreviousActionClick = false;
     }
 
     private void markRectangleIfMatched(int touchX, int touchY){
-        quarterBoard = getClickedQuarterBoard(touchX, touchY);
-        touchY -= quarterBoard.getTop();
-        touchX -= quarterBoard.getLeft();
-        for(Rectangle rect :quarterBoard.rectangles) {
+        squareSegmentView = getClickedQuarterBoard(touchX, touchY);
+        touchY -= squareSegmentView.getTop();
+        touchX -= squareSegmentView.getLeft();
+        for(Square rect : squareSegmentView.squares) {
             if (rect.contains(touchX, touchY)) {
-                int properIndex = permutations[quarterBoard.getPermutationID()][quarterBoard.rectangles.indexOf(rect)];
-                rect = quarterBoard.rectangles.get(properIndex);
+                int properIndex = permutations[squareSegmentView.getPermutationID()][squareSegmentView.squares.indexOf(rect)];
+                rect = squareSegmentView.squares.get(properIndex);
                 changeRectColor(rect);
                 rect.isSelected = true;
-                quarterBoard.invalidate();
+                squareSegmentView.invalidate();
                 wasPreviousActionClick = true;
             }
         }
 
     }
 
-    private QuarterBoard getClickedQuarterBoard(int touchX, int touchY){
+    private SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
         if(touchY < getHeight()/2)
-            return (touchX < getWidth()/2)? quarterBoards[0] : quarterBoards[1];
+            return (touchX < getWidth()/2)? squareSegmentViews[0] : squareSegmentViews[1];
         else
-            return (touchX < getWidth()/2)? quarterBoards[2] : quarterBoards[3];
+            return (touchX < getWidth()/2)? squareSegmentViews[2] : squareSegmentViews[3];
     }
 
-    private void changeRectColor(Rectangle rect){
+    private void changeRectColor(Square rect){
         if(!rect.isSelected) {
             if (countRectClick % 2 == 1)
                 rect.setColor(Color.CYAN);

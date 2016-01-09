@@ -11,18 +11,18 @@ import com.example.makda.pentago.Utils;
 import java.util.LinkedList;
 
 
-public class QuarterBoard extends View {
-    LinkedList<Rectangle> rectangles;
+public class SquareSegmentView extends View {
+    LinkedList<Square> squares;
 
-    public QuarterBoard(Context context) {
+    public SquareSegmentView(Context context) {
         super(context);
-        rectangles = new LinkedList<>();
+        squares = new LinkedList<>();
         createRectangles();
     }
 
-    public QuarterBoard(Context context, AttributeSet attrs) {
+    public SquareSegmentView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        rectangles = new LinkedList<>();
+        squares = new LinkedList<>();
         createRectangles();
     }
 
@@ -30,8 +30,8 @@ public class QuarterBoard extends View {
         int width = Utils.getScreenWidth(getContext())/2;
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
-                Rectangle rectangle = new Rectangle(new Rect(i * (width)/ 3 +1 , k * (width)/ 3 +1, (i + 1) * (width) / 3 -1 , (k + 1) * (width)/ 3-1));
-                rectangles.add(rectangle);
+                Square square = new Square(new Rect(i * (width)/ 3 +1 , k * (width)/ 3 +1, (i + 1) * (width) / 3 -1 , (k + 1) * (width)/ 3-1));
+                squares.add(square);
             }
         }
     }
@@ -40,7 +40,7 @@ public class QuarterBoard extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(/*new Random().nextInt()*/ Color.WHITE);
-        for( Rectangle r : rectangles)
+        for( Square r : squares)
             canvas.drawRect(r.rect, r.paint);
     }
 
