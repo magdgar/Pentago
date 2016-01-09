@@ -56,11 +56,24 @@ public class AIBoardView extends BoardView{
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int width = r-l;
         int height = b-t;
-        int spaceFromTop = (height - width)/2;
-        squareSegmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width/2 -5);
-        squareSegmentViews[1].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width/2 -5);
-        squareSegmentViews[2].layout(0, spaceFromTop + width/2, r / 2, spaceFromTop + width);
-        squareSegmentViews[3].layout(r / 2,spaceFromTop + width/2, r, spaceFromTop + width);
+
+        if(width > height){
+            int tmp = width;
+            width = height;
+            height = tmp;
+            int spaceFromLeft = (height - width) / 2;
+            squareSegmentViews[0].layout(spaceFromLeft - 5, 0, spaceFromLeft + width / 2 - 5, width / 2);
+            squareSegmentViews[1].layout(spaceFromLeft - 5, width / 2, spaceFromLeft + width / 2 - 5, width);
+            squareSegmentViews[2].layout(spaceFromLeft + width / 2, 0, spaceFromLeft + width, width / 2);
+            squareSegmentViews[3].layout( spaceFromLeft + width / 2, width / 2, spaceFromLeft + width, width);
+        }else {
+
+            int spaceFromTop = (height - width) / 2;
+            squareSegmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width / 2 - 5);
+            squareSegmentViews[1].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width / 2 - 5);
+            squareSegmentViews[2].layout(0, spaceFromTop + width / 2, r / 2, spaceFromTop + width);
+            squareSegmentViews[3].layout(r / 2, spaceFromTop + width / 2, r, spaceFromTop + width);
+        }
     }
 
     @Override
