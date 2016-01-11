@@ -38,7 +38,9 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void addQuaterBoards(){
-        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext())};
+        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()),
+                new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
+                new TriangleSegmentView(getContext())};
         for(TriangleSegmentView segmentView : segmentViews)
             addView(segmentView);
     }

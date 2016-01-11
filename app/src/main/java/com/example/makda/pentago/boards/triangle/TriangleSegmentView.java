@@ -29,13 +29,15 @@ public class TriangleSegmentView extends View {
     }
 
     public void createRectangles(){
-        int width = Utils.getScreenWidth(getContext())/10;
-        int height = Utils.getScreenHeight(getContext())/10;
+        int width = Utils.getScreenWidth(getContext())/11;
+        int height = Utils.getScreenHeight(getContext())/11;
         if(height < width)
             width = height;
         for (int i = 0; i < 4; i++) {
-            for (int k = 0; k < 3; k++) {
-                Square square = new Square(new Rect(i * width +1 , k * width +1, (i + 1) * width -1 , (k + 1) * width-1));
+            for (int k = 0; k < 4 - i; k++) {
+                int beg = width /2 * i;
+                int cor = k*width/2  + width/4 *i;
+                Square square = new Square(new Rect(i * width +1 , beg + k * width +1 + cor, (i + 1) * width -1 , beg +(k + 1) * width-1 + cor));
                 squares.add(square);
             }
         }
