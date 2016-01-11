@@ -7,7 +7,6 @@ package com.example.makda.pentago.boards.triangle;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
@@ -118,9 +117,8 @@ public class TriangleBoardView extends ViewGroup {
 
         int colors[] = new int[10];
         int len = segmentView.squares.size();
-        for(int i=0; i<len; i++){
+        for(int i=0; i<len; i++)
             colors[i] = segmentView.squares.get(i).getPaint().getColor();
-            Log.d("asdadd", String.valueOf(colors[i]));}
         for(int i=0; i<10; i++){
             segmentView.squares.get(permutations[segmentView.permutationID][i]).setColor(colors[i]);
         }
