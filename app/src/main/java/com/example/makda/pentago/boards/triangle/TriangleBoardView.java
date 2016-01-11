@@ -7,6 +7,7 @@ package com.example.makda.pentago.boards.triangle;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
@@ -80,8 +81,8 @@ public class TriangleBoardView extends ViewGroup {
                     if( x != touchX) {
                         segmentView = getClickedSegment(x, Math.round(event.getY()));
                         rotation = (x - touchX > 0) ? 1 : -1;
-                        int prevPremId = segmentView.getPermutationID();
                         segmentView.addToPermutationID(rotation);
+                        refreshRectangleColors();
                         segmentView.invalidate();
                         wasPreviousActionClick = false;
                     }
@@ -113,17 +114,16 @@ public class TriangleBoardView extends ViewGroup {
             return (touchX < getWidth()/2)? segmentViews[2] : segmentViews[3];
     }
 
-    private void refreshRectangleColors(int prevPErmId, int actPermId){
+    private void refreshRectangleColors(){
 
         int colors[] = new int[10];
         int len = segmentView.squares.size();
-        for(int i=0; i<len; i++)
+        for(int i=0; i<len; i++){
             colors[i] = segmentView.squares.get(i).getPaint().getColor();
-
-        Square firstSq = segmentView.squares.get(permutations[segmentView.permutationID][0]);
-        int firstColor = firstSq.getPaint().getColor();
-
-
+            Log.d("asdadd", String.valueOf(colors[i]));}
+        for(int i=0; i<10; i++){
+            segmentView.squares.get(permutations[segmentView.permutationID][i]).setColor(colors[i]);
+        }
     }
 
     private void changeRectColor(Square rect){
