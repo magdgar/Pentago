@@ -37,7 +37,7 @@ public class TriangleSegmentView extends View {
             for (int k = 0; k < 4 - i; k++) {
                 int beg = width /2 * i;
                 int cor = k*width/4  + width/6 *i;
-                Square square = new Square(new Rect(i * width +1 , beg + k * width +1 + cor, (i + 1) * width -1 , beg +(k + 1) * width-1 + cor));
+                Square square = new Square(new Rect(i * width + 1 , beg + k * width +1 + cor, (i + 1) * width -1 , beg +(k + 1) * width-1 + cor));
                 squares.add(square);
             }
         }
