@@ -1,7 +1,9 @@
-package com.example.makda.pentago.boards.triangle.triangle;
+package com.example.makda.pentago.boards.triangle.triangle.openGL;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
+
+import com.example.makda.pentago.boards.triangle.triangle.openGL.MyGLRenderer;
 
 class MyGLSurfaceView extends GLSurfaceView {
 

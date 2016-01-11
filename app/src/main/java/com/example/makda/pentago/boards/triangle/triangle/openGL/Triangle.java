@@ -1,6 +1,8 @@
-package com.example.makda.pentago.boards.triangle.triangle;
+package com.example.makda.pentago.boards.triangle.triangle.openGL;
 
 import android.opengl.GLES20;
+
+import com.example.makda.pentago.boards.triangle.triangle.openGL.MyGLRenderer;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

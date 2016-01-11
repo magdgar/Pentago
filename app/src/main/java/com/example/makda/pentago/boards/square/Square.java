@@ -24,6 +24,30 @@ public class Square {
         return false;
     }
 
+    public Rect getRect() {
+        return rect;
+    }
+
+    public void setRect(Rect rect) {
+        this.rect = rect;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
+    }
+
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
     public void setColor(int color){
         paint.setColor(color);
     }

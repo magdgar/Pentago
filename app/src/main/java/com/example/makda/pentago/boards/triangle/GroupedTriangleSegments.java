@@ -3,8 +3,6 @@ package com.example.makda.pentago.boards.triangle;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.example.makda.pentago.boards.triangle.triangle.Triangle;
-
 /**
  * Created by Makda on 2016-01-08.
  */

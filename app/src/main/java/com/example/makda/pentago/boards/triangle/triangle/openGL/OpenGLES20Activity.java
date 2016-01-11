@@ -1,8 +1,10 @@
-package com.example.makda.pentago.boards.triangle.triangle;
+package com.example.makda.pentago.boards.triangle.triangle.openGL;
 
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+
+import com.example.makda.pentago.boards.triangle.triangle.openGL.MyGLSurfaceView;
 
 /**
  * Created by Makda on 2016-01-09.

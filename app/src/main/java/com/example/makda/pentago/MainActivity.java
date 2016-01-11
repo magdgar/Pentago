@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.makda.pentago.boards.triangle.triangle.openGL.OpenGLES20Activity;
+
 import java.util.Random;
 
 /**
@@ -24,6 +26,11 @@ public class MainActivity extends Activity{
 
     public void startAIGame(View view){
         Intent resIntent = new Intent(this, StartDrawAIGame.class);
+        startActivity(resIntent);
+    }
+
+    public void drawTriangleInOpenGL(View view){
+        Intent resIntent = new Intent(this, OpenGLES20Activity.class);
         startActivity(resIntent);
     }
 }

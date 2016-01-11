@@ -1,7 +1,5 @@
-package com.example.makda.pentago.boards.triangle.triangle;
+package com.example.makda.pentago.boards.triangle.triangle.openGL;
 
-import android.content.Context;
-import android.opengl.EGLConfig;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 
