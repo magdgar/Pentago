@@ -62,7 +62,7 @@ public class TriangleSegmentView extends View {
     }
 
     public void addToPermutationID(int i){
-        int id = getPermutationID() + i;
+        int id = (getPermutationID() + i)%3;
         if(id <0)
             id = 2;
         setPermutationID(id);
