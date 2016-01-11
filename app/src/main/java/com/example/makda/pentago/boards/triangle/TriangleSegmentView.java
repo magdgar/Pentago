@@ -36,7 +36,7 @@ public class TriangleSegmentView extends View {
         for (int i = 0; i < 4; i++) {
             for (int k = 0; k < 4 - i; k++) {
                 int beg = width /2 * i;
-                int cor = k*width/2  + width/4 *i;
+                int cor = k*width/4  + width/6 *i;
                 Square square = new Square(new Rect(i * width +1 , beg + k * width +1 + cor, (i + 1) * width -1 , beg +(k + 1) * width-1 + cor));
                 squares.add(square);
             }
@@ -52,14 +52,13 @@ public class TriangleSegmentView extends View {
     }
 
     public int getPermutationID(){
+        //TODO if rotation triangle is not moveing we only reads colors and repaint
         int r = ((int)getRotation() )% 360;
         if( r == 0)
             return 0;
-        if(r == 90 || r == -270)
-            return 3;
-        if(r == 180 || r == -180)
+        if(r == 120 || r == -240)
             return 2;
-        if(r == 270 || r == -90)
+        if(r == 240 || r == -120)
             return 1;
         return 0;
     }
