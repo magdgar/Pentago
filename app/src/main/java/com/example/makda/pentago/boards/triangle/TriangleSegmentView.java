@@ -15,10 +15,12 @@ import java.util.LinkedList;
 
 public class TriangleSegmentView extends View {
     LinkedList<Square> squares;
+    int permutationID;
 
     public TriangleSegmentView(Context context) {
         super(context);
         squares = new LinkedList<>();
+        permutationID = 0;
         createRectangles();
     }
 
@@ -51,15 +53,18 @@ public class TriangleSegmentView extends View {
             canvas.drawRect(r.getRect(), r.getPaint());
     }
 
-    public int getPermutationID(){
-        //TODO if rotation triangle is not moveing we only reads colors and repaint
-        int r = ((int)getRotation() )% 360;
-        if( r == 0)
-            return 0;
-        if(r == 120 || r == -240)
-            return 2;
-        if(r == 240 || r == -120)
-            return 1;
-        return 0;
+    public int getPermutationID() {
+        return permutationID;
+    }
+
+    public void setPermutationID(int permutationID) {
+        this.permutationID = permutationID;
+    }
+
+    public void addToPermutationID(int i){
+        int id = getPermutationID() + i;
+        if(id <0)
+            id = 2;
+        setPermutationID(id);
     }
 }

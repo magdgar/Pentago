@@ -24,7 +24,7 @@ public class TriangleBoardView extends ViewGroup {
     public TriangleBoardView(Context context) {
         super(context);
         addQuaterBoards();
-        segmentView = getClickedQuarterBoard(0, 0);
+        segmentView = getClickedSegment(0, 0);
         createPermutation();
         wasPreviousActionClick = false;
         countRectClick = 0;
@@ -47,10 +47,9 @@ public class TriangleBoardView extends ViewGroup {
 
     private void createPermutation(){
         permutations = new int[][]{
-                {0,1,2,3,4,5,6,7,8},
-                {6,3,0,7,4,1,8,5,2},
-                {8,7,6,5,4,3,2,1,0},
-                {2,5,8,1,4,7,0,3,6}};
+                {0,1,2,3,4,5,6,7,8,9},
+                {3,6,8,9,2,5,7,1,4,0},
+                {9,7,4,0,8,5,1,6,2,3}};
     }
 
     @Override
@@ -79,9 +78,10 @@ public class TriangleBoardView extends ViewGroup {
                 int rotation;
                 if(wasPreviousActionClick)
                     if( x != touchX) {
-                        segmentView = getClickedQuarterBoard(x, Math.round(event.getY()));
-                        rotation = (x - touchX > 0) ? 90 : -90;
-                        segmentView.setRotation(segmentView.getRotation() + rotation);
+                        segmentView = getClickedSegment(x, Math.round(event.getY()));
+                        rotation = (x - touchX > 0) ? 1 : -1;
+                        int prevPremId = segmentView.getPermutationID();
+                        segmentView.addToPermutationID(rotation);
                         segmentView.invalidate();
                         wasPreviousActionClick = false;
                     }
@@ -91,7 +91,7 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void checkIfRectangleMatched(int touchX, int touchY){
-        segmentView = getClickedQuarterBoard(touchX, touchY);
+        segmentView = getClickedSegment(touchX, touchY);
         touchY -= segmentView.getTop();
         touchX -= segmentView.getLeft();
         for(Square rect : segmentView.squares) {
@@ -106,11 +106,24 @@ public class TriangleBoardView extends ViewGroup {
         }
     }
 
-    private TriangleSegmentView getClickedQuarterBoard(int touchX, int touchY){
+    private TriangleSegmentView getClickedSegment(int touchX, int touchY){
         if(touchY < getHeight()/2)
             return (touchX < getWidth()/2)? segmentViews[0] : segmentViews[1];
         else
             return (touchX < getWidth()/2)? segmentViews[2] : segmentViews[3];
+    }
+
+    private void refreshRectangleColors(int prevPErmId, int actPermId){
+
+        int colors[] = new int[10];
+        int len = segmentView.squares.size();
+        for(int i=0; i<len; i++)
+            colors[i] = segmentView.squares.get(i).getPaint().getColor();
+
+        Square firstSq = segmentView.squares.get(permutations[segmentView.permutationID][0]);
+        int firstColor = firstSq.getPaint().getColor();
+
+
     }
 
     private void changeRectColor(Square rect){
