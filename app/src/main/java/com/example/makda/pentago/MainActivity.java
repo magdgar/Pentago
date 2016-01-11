@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.makda.pentago.boards.triangle.triangle.openGL.OpenGLES20Activity;
-
-import java.util.Random;
+import com.example.makda.pentago.draw_activity.StartDraw;
+import com.example.makda.pentago.draw_activity.StartDrawAIGame;
 
 /**
  * Created by Makda on 2016-01-05.

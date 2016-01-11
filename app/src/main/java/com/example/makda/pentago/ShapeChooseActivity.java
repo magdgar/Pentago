@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.makda.pentago.boards.square.SquareSegmentView;
-import com.example.makda.pentago.boards.triangle.TriangleBoardView;
-import com.example.makda.pentago.boards.triangle.TriangleSegmentView;
-import com.example.makda.pentago.boards.triangle.triangle.openGL.OpenGLES20Activity;
+import com.example.makda.pentago.draw_activity.StartDrawTriangleGame;
 
 public class ShapeChooseActivity extends Activity{
 

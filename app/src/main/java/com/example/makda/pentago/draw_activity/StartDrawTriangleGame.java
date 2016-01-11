@@ -1,22 +1,24 @@
-package com.example.makda.pentago;
+package com.example.makda.pentago.draw_activity;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.makda.pentago.boards.square.AIBoardView;
+import com.example.makda.pentago.boards.triangle.TriangleBoardView;
+import com.example.makda.pentago.boards.triangle.TriangleSegmentView;
 
 /**
- * Created by Makda on 2016-01-06.
+ * Created by Makda on 2016-01-11.
  */
-public class StartDrawAIGame extends Activity {
-    AIBoardView bv;
+public class StartDrawTriangleGame extends Activity {
+
+    TriangleSegmentView bv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        bv = new AIBoardView(this);
+        bv = new TriangleSegmentView(this);
         bv.setBackgroundColor(Color.WHITE);
         setContentView(bv);
     }

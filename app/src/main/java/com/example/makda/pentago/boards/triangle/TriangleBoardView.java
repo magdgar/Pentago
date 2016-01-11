@@ -11,16 +11,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 
 import com.example.makda.pentago.boards.square.Square;
-import com.example.makda.pentago.boards.square.SquareSegmentView;
 
-
-import android.content.Context;
-import android.graphics.Color;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.ViewGroup;
-
-import com.example.makda.pentago.Utils;
 
 public class TriangleBoardView extends ViewGroup {
     private TriangleSegmentView[] segmentViews;
