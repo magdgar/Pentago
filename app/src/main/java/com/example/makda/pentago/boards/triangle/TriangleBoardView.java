@@ -41,7 +41,7 @@ public class TriangleBoardView extends ViewGroup {
     private void addQuaterBoards(){
         segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()),
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
-                new TriangleSegmentView(getContext())};
+                new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext())};
         for(TriangleSegmentView segmentView : segmentViews)
             addView(segmentView);
     }
@@ -61,7 +61,10 @@ public class TriangleBoardView extends ViewGroup {
         segmentViews[0].layout(0, 0, r / 2,width/2 +20);
         segmentViews[1].layout(r / 3, spaceFromTop/2 - 20, r - r/5, spaceFromTop/2 + width / 2+10);
         segmentViews[1].setRotation(180);
-        segmentViews[2].layout(2*width/9, width/2 -50, r / 2 + 2*width/9, (width/2)*2);
+        segmentViews[2].layout(2 * width / 9, width / 2 - 50, r / 2 + 2 * width / 9, width );
+        segmentViews[3].layout(0, width - 120, r / 2, 2 * width + 20);
+        segmentViews[4].layout(r / 3, spaceFromTop/2 + width / 2+10, r - r / 5, height - spaceFromTop/2);
+        segmentViews[4].setRotation(180);
 //        segmentViews[3].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width / 2 + 20);
 //        segmentViews[3].setRotation(180);
 
