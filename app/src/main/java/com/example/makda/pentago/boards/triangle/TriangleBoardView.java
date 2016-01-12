@@ -58,7 +58,13 @@ public class TriangleBoardView extends ViewGroup {
         int width = r-l;
         int height = b-t;
         int spaceFromTop = (height - width)/2;
-        segmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width/2 +20);
+        segmentViews[0].layout(0, 0, r / 2,width/2 +20);
+        segmentViews[1].layout(r / 3, spaceFromTop/2 - 5, r - r/5, spaceFromTop/2 + width / 2 + 20);
+        segmentViews[1].setRotation(180);
+        segmentViews[2].layout(0, width/2 + 25, r / 2, (width/2 +25)*2);
+//        segmentViews[3].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width / 2 + 20);
+//        segmentViews[3].setRotation(180);
+
     }
 
     @Override
@@ -116,9 +122,8 @@ public class TriangleBoardView extends ViewGroup {
     private void refreshRectangleColors(){
         int colors[] = new int[10];
         int len = segmentView.squares.size();
-        for(int i=0; i<len; i++){
+        for(int i=0; i<len; i++)
             colors[i] = segmentView.squares.get(permutations[segmentView.permutationID][i]).getPaint().getColor();
-        Log.d("color", String.valueOf(colors[i]));}
         for(int i=0; i<len; i++){
             segmentView.squares.get(i).setColor(colors[i]);
         }

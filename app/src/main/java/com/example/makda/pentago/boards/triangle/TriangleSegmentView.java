@@ -48,7 +48,7 @@ public class TriangleSegmentView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(Color.WHITE);
+        canvas.drawColor(Color.TRANSPARENT);
         for( Square r : squares)
             canvas.drawRect(r.getRect(), r.getPaint());
     }
