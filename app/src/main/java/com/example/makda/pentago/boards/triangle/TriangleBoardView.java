@@ -57,7 +57,7 @@ public class TriangleBoardView extends ViewGroup {
         int width = r-l;
         int height = b-t;
         int spaceFromTop = (height - width)/2;
-        segmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width/2 -5);
+        segmentViews[0].layout(0, spaceFromTop - 5, r / 2, spaceFromTop + width/2 +20);
     }
 
     @Override

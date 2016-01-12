@@ -31,8 +31,8 @@ public class TriangleSegmentView extends View {
     }
 
     public void createRectangles(){
-        int width = Utils.getScreenWidth(getContext())/11;
-        int height = Utils.getScreenHeight(getContext())/11;
+        int width = Utils.getScreenWidth(getContext())/9;
+        int height = Utils.getScreenHeight(getContext())/9;
         if(height < width)
             width = height;
         for (int i = 0; i < 4; i++) {
