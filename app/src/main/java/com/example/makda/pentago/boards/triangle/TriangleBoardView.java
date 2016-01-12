@@ -7,6 +7,7 @@ package com.example.makda.pentago.boards.triangle;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 
@@ -79,7 +80,8 @@ public class TriangleBoardView extends ViewGroup {
                 if(wasPreviousActionClick)
                     if( x != touchX) {
                         segmentView = getClickedSegment(x, Math.round(event.getY()));
-                        rotation = (x - touchX > 0) ? -1 : 1;
+                        rotation = (x - touchX > 0) ? 1 : -
+                                1;
                         segmentView.addToPermutationID(rotation);
                         refreshRectangleColors();
                         segmentView.invalidate();
@@ -96,8 +98,6 @@ public class TriangleBoardView extends ViewGroup {
         touchX -= segmentView.getLeft();
         for(Square rect : segmentView.squares) {
             if (rect.contains(touchX, touchY)) {
-                int properIndex = permutations[segmentView.getPermutationID()][segmentView.squares.indexOf(rect)];
-                rect = segmentView.squares.get(properIndex);
                 changeRectColor(rect);
                 rect.setIsSelected(true);
                 segmentView.invalidate();
@@ -117,9 +117,10 @@ public class TriangleBoardView extends ViewGroup {
         int colors[] = new int[10];
         int len = segmentView.squares.size();
         for(int i=0; i<len; i++)
-            colors[i] = segmentView.squares.get(i).getPaint().getColor();
+            colors[i] = segmentView.squares.get(permutations[segmentView.permutationID][i]).getPaint().getColor();
+        Log.d("permID", String.valueOf(segmentView.permutationID));
         for(int i=0; i<len; i++){
-            segmentView.squares.get(permutations[segmentView.permutationID][i]).setColor(colors[i]);
+            segmentView.squares.get(i).setColor(colors[i]);
         }
     }
 
