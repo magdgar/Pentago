@@ -116,9 +116,9 @@ public class TriangleBoardView extends ViewGroup {
     private void refreshRectangleColors(){
         int colors[] = new int[10];
         int len = segmentView.squares.size();
-        for(int i=0; i<len; i++)
+        for(int i=0; i<len; i++){
             colors[i] = segmentView.squares.get(permutations[segmentView.permutationID][i]).getPaint().getColor();
-        Log.d("permID", String.valueOf(segmentView.permutationID));
+        Log.d("color", String.valueOf(colors[i]));}
         for(int i=0; i<len; i++){
             segmentView.squares.get(i).setColor(colors[i]);
         }
