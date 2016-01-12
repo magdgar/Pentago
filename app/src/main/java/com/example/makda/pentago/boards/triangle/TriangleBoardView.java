@@ -58,12 +58,12 @@ public class TriangleBoardView extends ViewGroup {
         int width = r-l;
         int height = b-t;
         int spaceFromTop = (height - width)/2;
-        segmentViews[0].layout(0, 0, r / 2,width/2 +20);
-        segmentViews[1].layout(r / 3, spaceFromTop/2 - 20, r - r/5, spaceFromTop/2 + width / 2+10);
+        segmentViews[0].layout(width/10, width/6, r / 2 +width/10,width/2 +20 +width/6);
+        segmentViews[1].layout(width/10+ r / 3 -15, width/6+spaceFromTop/2 - 20,width/10+ r - r/5 -15, width/6+spaceFromTop/2 + width / 2+10);
         segmentViews[1].setRotation(180);
-        segmentViews[2].layout(2 * width / 9, width / 2 - 50, r / 2 + 2 * width / 9, width );
-        segmentViews[3].layout(0, width - 120, r / 2, 2 * width + 20);
-        segmentViews[4].layout(r / 3, spaceFromTop/2 + width / 2+10, r - r / 5, height - spaceFromTop -80);
+        segmentViews[2].layout(width/10+2 * width / 9, width/6+width / 2 - 50, width/10+r / 2 + 2 * width / 9, width/6+width );
+        segmentViews[3].layout(width/10, width/6+width - 120, width/10+r / 2,width/6+ 2 * width + 20);
+        segmentViews[4].layout(width/10+r / 3 -15, width/6+spaceFromTop/2 + width / 2+10, width/10+r - r / 5 -15, width/6+height - spaceFromTop -80);
         segmentViews[4].setRotation(180);
     }
 
