@@ -79,7 +79,7 @@ public class TriangleBoardView extends ViewGroup {
                 if(wasPreviousActionClick)
                     if( x != touchX) {
                         segmentView = getClickedSegment(x, Math.round(event.getY()));
-                        rotation = (x - touchX > 0) ? 1 : -1;
+                        rotation = (x - touchX > 0) ? -1 : 1;
                         segmentView.addToPermutationID(rotation);
                         refreshRectangleColors();
                         segmentView.invalidate();
