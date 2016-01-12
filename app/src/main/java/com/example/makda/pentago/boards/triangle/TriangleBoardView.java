@@ -59,9 +59,9 @@ public class TriangleBoardView extends ViewGroup {
         int height = b-t;
         int spaceFromTop = (height - width)/2;
         segmentViews[0].layout(0, 0, r / 2,width/2 +20);
-        segmentViews[1].layout(r / 3, spaceFromTop/2 - 5, r - r/5, spaceFromTop/2 + width / 2 + 20);
+        segmentViews[1].layout(r / 3, spaceFromTop/2 - 20, r - r/5, spaceFromTop/2 + width / 2+10);
         segmentViews[1].setRotation(180);
-        segmentViews[2].layout(0, width/2 + 25, r / 2, (width/2 +25)*2);
+        segmentViews[2].layout(2*width/9, width/2 -50, r / 2 + 2*width/9, (width/2)*2);
 //        segmentViews[3].layout(r / 2, spaceFromTop - 5, r, spaceFromTop + width / 2 + 20);
 //        segmentViews[3].setRotation(180);
 
