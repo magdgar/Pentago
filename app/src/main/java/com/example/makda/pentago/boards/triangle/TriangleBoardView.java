@@ -104,7 +104,7 @@ public class TriangleBoardView extends ViewGroup {
 
     private void checkIfRectangleMatched(int touchX, int touchY){
         //segmentView = getClickedSegment(touchX, touchY);
-        TriangleSegmentView segmentView = getClickedSegment(touchX, touchX);
+        TriangleSegmentView segmentView = getClickedSegment(touchX, touchY);
         //for(TriangleSegmentView segmentView: segmentViews) {
             touchY -= segmentView.getTop();
             touchX -= segmentView.getLeft();
@@ -121,24 +121,18 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private TriangleSegmentView getClickedSegment(int touchX, int touchY){
-        for(TriangleSegmentView segment : segmentViews) {
-            int lowX = segment.squares.get(0).getRect().centerX();
-            int highX = segment.squares.get(9).getRect().centerX() ;
-            int lowY = segment.squares.get(0).getRect().centerY() ;
-            int highY = segment.squares.get(3).getRect().centerY();
-            if (touchX > lowX && touchX < highX)
-                if (touchY > lowY && touchY < highY) {
-                    touchX -= segment.getLeft();
-                    touchY -= segment.getTop();
-                    Log.d("ddd", "eeeee");
-
-                    if (touchY > touchX * 150 / 250 && touchY < touchX * (-265) / 240 + 280) {
-                        return segment;
-
-                    }
-                }
-        }
-        return segmentViews[4];
+        int middle = segmentViews[0].getRight();
+        if(touchX < middle) {
+            if (touchY < segmentViews[0].getBottom())
+                return segmentViews[0];
+            else if (touchY < segmentViews[2].getBottom())
+                return segmentViews[2];
+            return segmentViews[4];
+        }else if (touchY < segmentViews[1].getBottom())
+                return segmentViews[1];
+            else if(touchY < segmentViews[3].getBottom())
+                return  segmentViews[3];
+        return segmentViews[5];
     }
 
     private void refreshRectangleColors(){
