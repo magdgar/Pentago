@@ -9,9 +9,12 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.makda.pentago.boards.square.Square;
+
+import java.util.ArrayList;
 
 
 public class TriangleBoardView extends ViewGroup {
@@ -62,9 +65,9 @@ public class TriangleBoardView extends ViewGroup {
         segmentViews[1].layout(width/10+ r / 3 -15, width/6+spaceFromTop/2 - 20,width/10+ r - r/5 -15, width/6+spaceFromTop/2 + width / 2+10);
         segmentViews[1].setRotation(180);
         segmentViews[2].layout(width/10+2 * width / 9, width/6+width / 2 - 50, width/10+r / 2 + 2 * width / 9, width/6+width );
-        segmentViews[3].layout(width/10, width/6+width - 120, width/10+r / 2,width/6+ 2 * width + 20);
-        segmentViews[4].layout(width/10+r / 3 -15, width/6+spaceFromTop/2 + width / 2+10, width/10+r - r / 5 -15, width/6+height - spaceFromTop -80);
-        segmentViews[4].setRotation(180);
+        segmentViews[4].layout(width / 10, width / 6 + width - 120, width / 10 + r / 2, width / 6 + 2 * width + 20);
+        segmentViews[3].layout(width / 10 + r / 3 - 15, width / 6 + spaceFromTop / 2 + width / 2 + 10, width / 10 + r - r / 5 - 15, width / 6 + height - spaceFromTop - 80);
+        segmentViews[3].setRotation(180);
     }
 
     @Override
@@ -86,8 +89,7 @@ public class TriangleBoardView extends ViewGroup {
                 if(wasPreviousActionClick)
                     if( x != touchX) {
                         segmentView = getClickedSegment(x, Math.round(event.getY()));
-                        rotation = (x - touchX > 0) ? 1 : -
-                                1;
+                        rotation = (x - touchX > 0) ? 1 : -1;
                         segmentView.addToPermutationID(rotation);
                         refreshRectangleColors();
                         segmentView.invalidate();
@@ -99,24 +101,37 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void checkIfRectangleMatched(int touchX, int touchY){
-        segmentView = getClickedSegment(touchX, touchY);
-        touchY -= segmentView.getTop();
-        touchX -= segmentView.getLeft();
-        for(Square rect : segmentView.squares) {
-            if (rect.contains(touchX, touchY)) {
-                changeRectColor(rect);
-                rect.setIsSelected(true);
-                segmentView.invalidate();
-                wasPreviousActionClick = true;
+        //segmentView = getClickedSegment(touchX, touchY);
+        TriangleSegmentView segmentView = getClickedSegment(touchX, touchX);
+        //for(TriangleSegmentView segmentView: segmentViews) {
+            touchY -= segmentView.getTop();
+            touchX -= segmentView.getLeft();
+
+            for (Square rect : segmentView.squares) {
+                if (rect.contains(touchX, touchY)) {
+                    changeRectColor(rect);
+                    rect.setIsSelected(true);
+                    segmentView.invalidate();
+                    wasPreviousActionClick = true;
+                }
             }
-        }
+        //}
     }
 
     private TriangleSegmentView getClickedSegment(int touchX, int touchY){
-        if(touchY < getHeight()/2)
-            return (touchX < getWidth()/2)? segmentViews[0] : segmentViews[1];
-        else
-            return (touchX < getWidth()/2)? segmentViews[2] : segmentViews[3];
+        for(TriangleSegmentView segment : segmentViews) {
+            int lowX = segment.squares.get(0).getRect().centerX();
+            int highX = segment.squares.get(9).getRect().centerX() ;
+            int lowY = segment.squares.get(0).getRect().centerY() ;
+            int highY = segment.squares.get(3).getRect().centerY();
+            if (touchX > lowX && touchX < highX)
+                if (touchY > lowY && touchY < highY)
+                    touchX -= segment.getLeft();
+                    touchY -= segment.getTop();
+                    if(touchY < touchX* 150/250 && touchY > touchX* (-265)/240 + 280)
+                        return segment;
+        }
+        return segmentViews[4];
     }
 
     private void refreshRectangleColors(){
