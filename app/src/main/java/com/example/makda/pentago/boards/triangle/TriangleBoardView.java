@@ -24,6 +24,7 @@ public class TriangleBoardView extends ViewGroup {
     private int countRectClick;
     private boolean wasPreviousActionClick;
     int touchX;
+    RevercedTriangleSegmentView rts;
 
     public TriangleBoardView(Context context) {
         super(context);
@@ -45,6 +46,8 @@ public class TriangleBoardView extends ViewGroup {
         segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext())};
+        rts = new RevercedTriangleSegmentView(getContext());
+        addView(rts);
         for(TriangleSegmentView segmentView : segmentViews)
             addView(segmentView);
     }
@@ -63,12 +66,13 @@ public class TriangleBoardView extends ViewGroup {
         segmentViews[0].setRotation(180);
         segmentViews[1].layout(r / 2 + 5, 50, r, width / 2 + 60);
 
-        segmentViews[2].layout(10, width / 2 +30, r / 2, width + 45);
+        segmentViews[2].layout(10, width / 2 + 30, r / 2, width + 45);
         segmentViews[2].setRotation(180);
         segmentViews[3].layout(r / 2 + 5,  width / 2 + 70, r, width +90);
 
-        segmentViews[4].layout(10, width + 60 , r / 2, b - 70);
-        segmentViews[4].setRotation(180);
+        //segmentViews[4].layout(10, width + 60 , r / 2, b - 70);
+        //segmentViews[4].setRotation(180);
+        rts.layout(10, width + 60 , r / 2, b - 70);
         segmentViews[5].layout(r / 2 + 5, width + 100, r, b);
     }
 
@@ -103,21 +107,18 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void checkIfRectangleMatched(int touchX, int touchY){
-        //segmentView = getClickedSegment(touchX, touchY);
-        TriangleSegmentView segmentView = getClickedSegment(touchX, touchY);
-        //for(TriangleSegmentView segmentView: segmentViews) {
-            touchY -= segmentView.getTop();
-            touchX -= segmentView.getLeft();
+        segmentView = getClickedSegment(touchX, touchY);
+        touchY -= segmentView.getTop();
+        touchX -= segmentView.getLeft();
 
-            for (Square rect : segmentView.squares) {
-                if (rect.contains(touchX, touchY)) {
-                    changeRectColor(rect);
-                    rect.setIsSelected(true);
-                    segmentView.invalidate();
-                    wasPreviousActionClick = true;
-                }
+        for (Square rect : segmentView.squares) {
+            if (rect.contains(touchX, touchY)) {
+                changeRectColor(rect);
+                rect.setIsSelected(true);
+                segmentView.invalidate();
+                wasPreviousActionClick = true;
             }
-        //}
+        }
     }
 
     private TriangleSegmentView getClickedSegment(int touchX, int touchY){
