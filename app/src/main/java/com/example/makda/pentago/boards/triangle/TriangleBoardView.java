@@ -125,11 +125,14 @@ public class TriangleBoardView extends ViewGroup {
             int lowY = segment.squares.get(0).getRect().centerY() ;
             int highY = segment.squares.get(3).getRect().centerY();
             if (touchX > lowX && touchX < highX)
-                if (touchY > lowY && touchY < highY)
+                if (touchY > lowY && touchY < highY) {
                     touchX -= segment.getLeft();
                     touchY -= segment.getTop();
-                    if(touchY < touchX* 150/250 && touchY > touchX* (-265)/240 + 280)
+                    if (touchY > touchX * 150 / 250 && touchY < touchX * (-265) / 240 + 280) {
+                        Log.d("ddd", "Yey");
                         return segment;
+                    }
+                }
         }
         return segmentViews[4];
     }
