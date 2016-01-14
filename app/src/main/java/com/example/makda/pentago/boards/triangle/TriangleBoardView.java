@@ -39,9 +39,10 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void addQuaterBoards(){
-        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
-                new TriangleSegmentView(getContext())};
-        rotatedSegmentViews = new RotatedTriangleSegmentView[]{new RotatedTriangleSegmentView(getContext()), new RotatedTriangleSegmentView(getContext()), new RotatedTriangleSegmentView(getContext())};
+        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()),
+                new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext())};
+        rotatedSegmentViews = new RotatedTriangleSegmentView[]{new RotatedTriangleSegmentView(getContext()),
+                new RotatedTriangleSegmentView(getContext()), new RotatedTriangleSegmentView(getContext())};
         rts = new RotatedTriangleSegmentView(getContext());
         addView(rts);
         for(TriangleSegmentView segmentView : segmentViews)
@@ -117,7 +118,7 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private TriangleSegmentView getClickedSegment(int touchX, int touchY){
-        int middle = segmentViews[0].getRight();
+        int middle = rotatedSegmentViews[0].getRight();
         if(touchX < middle) {
             if (touchY < rotatedSegmentViews[0].getBottom())
                 return rotatedSegmentViews[0];
