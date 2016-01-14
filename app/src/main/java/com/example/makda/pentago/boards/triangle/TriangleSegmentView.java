@@ -17,18 +17,21 @@ import java.util.LinkedList;
 public class TriangleSegmentView extends View {
     LinkedList<Square> squares;
     int permutationID;
+    int[][] permutations;
 
     public TriangleSegmentView(Context context) {
         super(context);
         squares = new LinkedList<>();
         permutationID = 0;
         createRectangles();
+        createPermutation();
     }
 
     public TriangleSegmentView(Context context, AttributeSet attrs) {
         super(context, attrs);
         squares = new LinkedList<>();
         createRectangles();
+        createPermutation();
     }
 
     public void createRectangles(){
@@ -45,6 +48,13 @@ public class TriangleSegmentView extends View {
             }
         }
     }
+    private void createPermutation(){
+        permutations = new int[][]{
+                {0,1,2,3,4,5,6,7,8,9},
+                {3,6,8,9,2,5,7,1,4,0},
+                {9,7,4,0,8,5,1,6,2,3}};
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {

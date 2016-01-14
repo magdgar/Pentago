@@ -14,19 +14,16 @@ import android.view.ViewGroup;
 
 public class TriangleBoardView extends ViewGroup {
     private TriangleSegmentView[] segmentViews;
-    private int[][] permutations;
     TriangleSegmentView segmentView;
     private RotatedTriangleSegmentView[] rotatedSegmentViews;
     private int countRectClick;
     private boolean wasPreviousActionClick;
     int touchX;
-    RotatedTriangleSegmentView rts;
 
     public TriangleBoardView(Context context) {
         super(context);
         addQuaterBoards();
         segmentView = getClickedSegment(0, 0);
-        createPermutation();
         wasPreviousActionClick = false;
         countRectClick = 0;
     }
@@ -34,7 +31,6 @@ public class TriangleBoardView extends ViewGroup {
     public TriangleBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         addQuaterBoards();
-        createPermutation();
         countRectClick = 0;
     }
 
@@ -43,20 +39,12 @@ public class TriangleBoardView extends ViewGroup {
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext())};
         rotatedSegmentViews = new RotatedTriangleSegmentView[]{new RotatedTriangleSegmentView(getContext()),
                 new RotatedTriangleSegmentView(getContext()), new RotatedTriangleSegmentView(getContext())};
-        rts = new RotatedTriangleSegmentView(getContext());
-        addView(rts);
+
         for(TriangleSegmentView segmentView : segmentViews)
             addView(segmentView);
 
         for(RotatedTriangleSegmentView segmentView :rotatedSegmentViews)
             addView(segmentView);
-    }
-
-    private void createPermutation(){
-        permutations = new int[][]{
-                {0,1,2,3,4,5,6,7,8,9},
-                {3,6,8,9,2,5,7,1,4,0},
-                {9,7,4,0,8,5,1,6,2,3}};
     }
 
     @Override
@@ -136,7 +124,7 @@ public class TriangleBoardView extends ViewGroup {
         int colors[] = new int[10];
         int len = segmentView.squares.size();
         for(int i=0; i<len; i++)
-            colors[i] = segmentView.squares.get(permutations[segmentView.permutationID][i]).getPaint().getColor();
+            colors[i] = segmentView.squares.get(segmentView.permutations[segmentView.permutationID][i]).getPaint().getColor();
         for(int i=0; i<len; i++){
             segmentView.squares.get(i).setColor(colors[i]);
         }

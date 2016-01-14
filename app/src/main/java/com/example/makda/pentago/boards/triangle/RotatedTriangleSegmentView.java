@@ -11,6 +11,7 @@ import com.example.makda.pentago.Utils;
 public class RotatedTriangleSegmentView extends TriangleSegmentView {
     public RotatedTriangleSegmentView(Context context) {
         super(context);
+        createPermutation();
     }
 
     public void createRectangles(){
@@ -26,5 +27,12 @@ public class RotatedTriangleSegmentView extends TriangleSegmentView {
                 squares.add(square);
             }
         }
+    }
+
+    private void createPermutation(){
+        permutations = new int[][]{
+                {0,1,2,3,4,5,6,7,8,9},
+                {9,5,8,2,4,3,0,1,7,6},
+                {6,3,7,8,4,1,9,5,2,0}};
     }
 }
