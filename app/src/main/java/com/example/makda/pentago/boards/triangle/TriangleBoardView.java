@@ -42,7 +42,7 @@ public class TriangleBoardView extends ViewGroup {
     }
 
     private void addQuaterBoards(){
-        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()),
+        segmentViews = new TriangleSegmentView[]{new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext()),
                 new TriangleSegmentView(getContext()), new TriangleSegmentView(getContext())};
         for(TriangleSegmentView segmentView : segmentViews)
@@ -59,15 +59,17 @@ public class TriangleBoardView extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int width = r-l;
-        int height = b-t;
-        int spaceFromTop = (height - width)/2;
-        segmentViews[0].layout(width/10, width/6, r / 2 +width/10,width/2 +20 +width/6);
-        segmentViews[1].layout(width/10+ r / 3 -15, width/6+spaceFromTop/2 - 20,width/10+ r - r/5 -15, width/6+spaceFromTop/2 + width / 2+10);
-        segmentViews[1].setRotation(180);
-        segmentViews[2].layout(width/10+2 * width / 9, width/6+width / 2 - 50, width/10+r / 2 + 2 * width / 9, width/6+width );
-        segmentViews[4].layout(width / 10, width / 6 + width - 120, width / 10 + r / 2, width / 6 + 2 * width + 20);
-        segmentViews[3].layout(width / 10 + r / 3 - 15, width / 6 + spaceFromTop / 2 + width / 2 + 10, width / 10 + r - r / 5 - 15, width / 6 + height - spaceFromTop - 80);
-        segmentViews[3].setRotation(180);
+        segmentViews[0].layout(10, 10, r / 2, width / 2 + 20);
+        segmentViews[0].setRotation(180);
+        segmentViews[1].layout(r / 2 + 5, 50, r, width / 2 + 60);
+
+        segmentViews[2].layout(10, width / 2 +30, r / 2, width + 45);
+        segmentViews[2].setRotation(180);
+        segmentViews[3].layout(r / 2 + 5,  width / 2 + 70, r, width +90);
+
+        segmentViews[4].layout(10, width + 60 , r / 2, b - 70);
+        segmentViews[4].setRotation(180);
+        segmentViews[5].layout(r / 2 + 5, width + 100, r, b);
     }
 
     @Override
@@ -128,9 +130,11 @@ public class TriangleBoardView extends ViewGroup {
                 if (touchY > lowY && touchY < highY) {
                     touchX -= segment.getLeft();
                     touchY -= segment.getTop();
+                    Log.d("ddd", "eeeee");
+
                     if (touchY > touchX * 150 / 250 && touchY < touchX * (-265) / 240 + 280) {
-                        Log.d("ddd", "Yey");
                         return segment;
+
                     }
                 }
         }
