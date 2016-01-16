@@ -13,5 +13,7 @@ public class Square extends com.example.makda.pentago.boards.square.Square{
         this.getPaint().setColor(color);
         if(color == -7829368)
             this.setIsSelected(false);
+        else
+            this.setIsSelected(true);
     }
 }

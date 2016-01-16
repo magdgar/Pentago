@@ -100,7 +100,7 @@ public class TriangleBoardView extends ViewGroup {
                 changeRectColor(rect);
                 rect.setIsSelected(true);
                 segmentView.invalidate();
-                wasPreviousActionClick = true;
+                wasPreviousActionClick = true;;
             }
         }
     }

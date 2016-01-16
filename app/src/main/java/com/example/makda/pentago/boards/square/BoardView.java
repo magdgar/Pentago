@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import com.example.makda.pentago.Utils;
 
 public class BoardView extends ViewGroup {
-    private SquareSegmentView[] squareSegmentViews;
-    private int[][] permutations;
+    protected SquareSegmentView[] squareSegmentViews;
+    protected int[][] permutations;
     SquareSegmentView squareSegmentView;
-    private int countRectClick;
-    private boolean wasPreviousActionClick;
+    protected int countRectClick;
+    protected boolean wasPreviousActionClick;
     int touchX;
 
     public BoardView(Context context) {
@@ -32,14 +32,14 @@ public class BoardView extends ViewGroup {
         countRectClick = 0;
     }
 
-    private void addQuaterBoards(){
+    protected void addQuaterBoards(){
         squareSegmentViews = new SquareSegmentView[]{new SquareSegmentView(getContext()), new SquareSegmentView(getContext()),
                 new SquareSegmentView(getContext()), new SquareSegmentView(getContext())};
         for(SquareSegmentView squareSegmentView : squareSegmentViews)
             addView(squareSegmentView);
     }
 
-    private void createPermutation(){
+    protected void createPermutation(){
         permutations = new int[][]{
                 {0,1,2,3,4,5,6,7,8},
                 {6,3,0,7,4,1,8,5,2},
@@ -68,7 +68,7 @@ public class BoardView extends ViewGroup {
                 touchX = Math.round(event.getX());
                 touchY = Math.round(event.getY());
                 if(!wasPreviousActionClick)
-                    checkIfRectangleMatched(touchX, touchY);
+                    markRectangleIfMatched(touchX, touchY);
                 break;
 
             case MotionEvent.ACTION_MOVE:
@@ -87,7 +87,7 @@ public class BoardView extends ViewGroup {
         return true;
     }
 
-    private void checkIfRectangleMatched(int touchX, int touchY){
+    protected void markRectangleIfMatched(int touchX, int touchY){
         squareSegmentView = getClickedQuarterBoard(touchX, touchY);
         touchY -= squareSegmentView.getTop();
         touchX -= squareSegmentView.getLeft();
@@ -101,16 +101,17 @@ public class BoardView extends ViewGroup {
                 wasPreviousActionClick = true;
             }
         }
+
     }
 
-    private SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
+    protected SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
         if(touchY < getHeight()/2)
             return (touchX < getWidth()/2)? squareSegmentViews[0] : squareSegmentViews[1];
         else
             return (touchX < getWidth()/2)? squareSegmentViews[2] : squareSegmentViews[3];
     }
 
-    private void changeRectColor(Square rect){
+    protected void changeRectColor(Square rect){
         if(!rect.isSelected) {
             if (countRectClick % 2 == 1)
                 rect.setColor(Color.CYAN);

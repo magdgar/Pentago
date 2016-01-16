@@ -13,7 +13,7 @@ import java.util.Random;
 /**
  * Created by Makda on 2016-01-06.
  */
-public class AIBoardView extends BoardView{
+public class AIBoardView extends ViewGroup{
     private SquareSegmentView[] squareSegmentViews;
     private int[][] permutations;
     SquareSegmentView squareSegmentView;
@@ -37,14 +37,14 @@ public class AIBoardView extends BoardView{
         countRectClick = 0;
     }
 
-    private void addQuaterBoards(){
+    protected void addQuaterBoards(){
         squareSegmentViews = new SquareSegmentView[]{new SquareSegmentView(getContext()), new SquareSegmentView(getContext()),
                 new SquareSegmentView(getContext()), new SquareSegmentView(getContext())};
         for(SquareSegmentView squareSegmentView : squareSegmentViews)
             addView(squareSegmentView);
     }
 
-    private void createPermutation(){
+    protected void createPermutation(){
         permutations = new int[][]{
                 {0,1,2,3,4,5,6,7,8},
                 {6,3,0,7,4,1,8,5,2},
@@ -122,7 +122,7 @@ public class AIBoardView extends BoardView{
         wasPreviousActionClick = false;
     }
 
-    private void markRectangleIfMatched(int touchX, int touchY){
+    protected void markRectangleIfMatched(int touchX, int touchY){
         squareSegmentView = getClickedQuarterBoard(touchX, touchY);
         touchY -= squareSegmentView.getTop();
         touchX -= squareSegmentView.getLeft();
@@ -139,14 +139,14 @@ public class AIBoardView extends BoardView{
 
     }
 
-    private SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
+   protected SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
         if(touchY < getHeight()/2)
             return (touchX < getWidth()/2)? squareSegmentViews[0] : squareSegmentViews[1];
         else
             return (touchX < getWidth()/2)? squareSegmentViews[2] : squareSegmentViews[3];
     }
 
-    private void changeRectColor(Square rect){
+    protected void changeRectColor(Square rect){
         if(!rect.isSelected) {
             if (countRectClick % 2 == 1)
                 rect.setColor(Color.CYAN);
