@@ -147,7 +147,7 @@ public class AIRandoxBoardView extends ViewGroup {
     protected void changeRectColor(Square rect){
         if(!rect.isSelected) {
             if (countRectClick % 2 == 1)
-                rect.setColor(Color.CYAN);
+                rect.setColor(Color.GREEN);
             else
                 rect.setColor(Color.YELLOW);
             countRectClick++;
