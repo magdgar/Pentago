@@ -20,6 +20,7 @@
         </activity>
 
         <activity android:name=".LogInActivity"
+            android:screenOrientation="portrait"
             android:label="Pentago">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,17 +33,27 @@
         </activity>
         <activity
             android:name=".draw_activity.StartDraw"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".draw_activity.StartDrawAIGame"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
+
+        <activity android:name=".draw_activity.StartDrawRandoxGame"
+            android:screenOrientation="portrait"
+            android:label="Pentago">
+
+        </activity>
+
         <activity android:name=".boards.triangle.triangle.openGL.OpenGLES20Activity"
             android:label="Pentago">
 
         </activity>
         <activity android:name=".draw_activity.StartDrawTriangleGame"
+            android:screenOrientation="portrait"
             android:label="Pentago">
 
         </activity>

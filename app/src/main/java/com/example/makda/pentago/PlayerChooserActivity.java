@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.makda.pentago.boards.triangle.triangle.openGL.OpenGLES20Activity;
 import com.example.makda.pentago.draw_activity.StartDraw;
 import com.example.makda.pentago.draw_activity.StartDrawAIGame;
+import com.example.makda.pentago.draw_activity.StartDrawRandoxGame;
 
 /**
  * Created by Makda on 2016-01-05.
@@ -26,6 +27,11 @@ public class PlayerChooserActivity extends Activity{
 
     public void startAIGame(View view){
         Intent resIntent = new Intent(this, StartDrawAIGame.class);
+        startActivity(resIntent);
+    }
+
+    public void startRandoxGame(View view){
+        Intent resIntent = new Intent(this, StartDrawRandoxGame.class);
         startActivity(resIntent);
     }
 

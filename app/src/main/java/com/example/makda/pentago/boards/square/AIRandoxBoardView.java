@@ -11,9 +11,9 @@ import com.example.makda.pentago.Utils;
 import java.util.Random;
 
 /**
- * Created by Makda on 2016-01-06.
+ * Created by Makda on 2016-01-19.
  */
-public class AIBoardView extends ViewGroup{
+public class AIRandoxBoardView extends ViewGroup {
     private SquareSegmentView[] squareSegmentViews;
     private int[][] permutations;
     SquareSegmentView squareSegmentView;
@@ -21,7 +21,7 @@ public class AIBoardView extends ViewGroup{
     private boolean wasPreviousActionClick;
     int touchX;
 
-    public AIBoardView(Context context) {
+    public AIRandoxBoardView(Context context) {
         super(context);
         addQuaterBoards();
         squareSegmentView = getClickedQuarterBoard(0, 0);
@@ -30,7 +30,7 @@ public class AIBoardView extends ViewGroup{
         countRectClick = 0;
     }
 
-    public AIBoardView(Context context, AttributeSet attrs) {
+    public AIRandoxBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         addQuaterBoards();
         createPermutation();
@@ -113,7 +113,6 @@ public class AIBoardView extends ViewGroup{
             int y = rand.nextInt(Utils.getScreenHeight(getContext()));
             markRectangleIfMatched(x, y);
         }
-        squareSegmentView = squareSegmentViews[rand.nextInt(4)];
 
         int rotation = (rand.nextInt(2) - 1 > 0) ? 90 : -90;
         squareSegmentView.setRotation(squareSegmentView.getRotation() + rotation);
@@ -138,7 +137,7 @@ public class AIBoardView extends ViewGroup{
 
     }
 
-   protected SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
+    protected SquareSegmentView getClickedQuarterBoard(int touchX, int touchY){
         if(touchY < getHeight()/2)
             return (touchX < getWidth()/2)? squareSegmentViews[0] : squareSegmentViews[1];
         else
@@ -155,3 +154,4 @@ public class AIBoardView extends ViewGroup{
         }
     }
 }
+
