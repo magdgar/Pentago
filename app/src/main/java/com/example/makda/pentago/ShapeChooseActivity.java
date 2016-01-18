@@ -16,7 +16,7 @@ public class ShapeChooseActivity extends Activity{
     }
 
     public void startRectangleGame(View view){
-        Intent resIntent = new Intent(this, MainActivity.class);
+        Intent resIntent = new Intent(this, PlayerChooserActivity.class);
         startActivity(resIntent);
     }
 

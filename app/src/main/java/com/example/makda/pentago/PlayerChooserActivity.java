@@ -12,11 +12,11 @@ import com.example.makda.pentago.draw_activity.StartDrawAIGame;
 /**
  * Created by Makda on 2016-01-05.
  */
-public class MainActivity extends Activity{
+public class PlayerChooserActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_player_chooser);
     }
 
     public void startSingleGame(View view){
