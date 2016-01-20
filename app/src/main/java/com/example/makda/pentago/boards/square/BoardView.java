@@ -87,7 +87,7 @@ public class BoardView extends ViewGroup {
         return true;
     }
 
-    protected void markRectangleIfMatched(int touchX, int touchY){
+    public void markRectangleIfMatched(int touchX, int touchY){
         squareSegmentView = getClickedQuarterBoard(touchX, touchY);
         touchY -= squareSegmentView.getTop();
         touchX -= squareSegmentView.getLeft();
@@ -119,5 +119,9 @@ public class BoardView extends ViewGroup {
                 rect.setColor(Color.MAGENTA);
             countRectClick++;
         }
+    }
+
+    public SquareSegmentView[] getSquareSegmentViews() {
+        return squareSegmentViews;
     }
 }

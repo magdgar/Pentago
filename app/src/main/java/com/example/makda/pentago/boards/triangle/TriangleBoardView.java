@@ -13,25 +13,35 @@ import android.view.ViewGroup;
 
 
 public class TriangleBoardView extends ViewGroup {
+    AIPlayer player;
     private TriangleSegmentView[] segmentViews;
-    TriangleSegmentView segmentView;
     private RotatedTriangleSegmentView[] rotatedSegmentViews;
-    private int countRectClick;
+    TriangleSegmentView segmentView;
     private boolean wasPreviousActionClick;
     int touchX;
+
+    public TriangleSegmentView[] getSegmentViews() {
+        return segmentViews;
+    }
+
+    public RotatedTriangleSegmentView[] getRotatedSegmentViews() {
+        return rotatedSegmentViews;
+    }
 
     public TriangleBoardView(Context context) {
         super(context);
         addQuaterBoards();
         segmentView = getClickedSegment(0, 0);
         wasPreviousActionClick = false;
-        countRectClick = 0;
+    }
+
+    public void setPlayer(AIPlayer player) {
+        this.player = player;
     }
 
     public TriangleBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         addQuaterBoards();
-        countRectClick = 0;
     }
 
     private void addQuaterBoards(){
@@ -84,6 +94,7 @@ public class TriangleBoardView extends ViewGroup {
                         refreshRectangleColors();
                         segmentView.invalidate();
                         wasPreviousActionClick = false;
+                        player.makeMoves();
                     }
                 break;
         }
@@ -120,7 +131,7 @@ public class TriangleBoardView extends ViewGroup {
         return segmentViews[2];
     }
 
-    private void refreshRectangleColors(){
+    public void refreshRectangleColors(){
         int colors[] = new int[10];
         int len = segmentView.squares.size();
         for(int i=0; i<len; i++)
@@ -132,11 +143,7 @@ public class TriangleBoardView extends ViewGroup {
 
     private void changeRectColor(Square rect){
         if(!rect.isSelected()) {
-            if (countRectClick % 2 == 1)
-                rect.setColor(Color.CYAN);
-            else
-                rect.setColor(Color.MAGENTA);
-            countRectClick++;
+            rect.setColor(Color.CYAN);
         }
     }
 }

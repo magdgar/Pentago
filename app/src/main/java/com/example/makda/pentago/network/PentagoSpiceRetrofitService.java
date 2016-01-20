@@ -9,7 +9,7 @@ import com.octo.android.robospice.retrofit.RetrofitGsonSpiceService;
  * Created by Maciek on 05-Jul-15.
  */
 public class PentagoSpiceRetrofitService extends RetrofitGsonSpiceService {
-    private final String ENDPOINT = "http://192.168.1.11:8080";
+    private final String ENDPOINT = "http://79.185.216.78:8080";
 
     @Override
     protected String getServerUrl() {
