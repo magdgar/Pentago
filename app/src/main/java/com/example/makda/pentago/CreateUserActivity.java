@@ -1,5 +1,6 @@
 package com.example.makda.pentago;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,7 @@ public class CreateUserActivity extends SpiceActivity {
         String password = passwordEditText.getText().toString();
         String email = emailEditText.getText().toString();
         CreateUserRequest userRequest = new CreateUserRequest(login, password, email);
+        final Intent resIntent = new Intent(this, ShapeChooseActivity.class);
         getSpiceManager().execute(userRequest, new RequestListener<Void>() {
             @Override
             public void onRequestFailure(SpiceException spiceException) {
@@ -41,6 +43,7 @@ public class CreateUserActivity extends SpiceActivity {
 
             @Override
             public void onRequestSuccess(Void aVoid) {
+                startActivity(resIntent);
                 Log.v("ASDASD", "SUCCESS onCreate!!!");
             }
         });

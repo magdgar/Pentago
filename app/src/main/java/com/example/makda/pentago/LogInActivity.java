@@ -57,6 +57,11 @@ public class LogInActivity extends SpiceActivity {
 
     }
 
+    public void onThanks(View view){
+        Intent resIntent = new Intent(this, ShapeChooseActivity.class);
+        startActivity(resIntent);
+    }
+
     public void onCreateUser(View view){
         Intent resIntent = new Intent(this, CreateUserActivity.class);
         startActivity(resIntent);
