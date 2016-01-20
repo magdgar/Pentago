@@ -10,15 +10,17 @@ import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;
 public class CreateUserRequest extends RetrofitSpiceRequest<Void, PentagoApi> {
     private String login;
     private String password;
+    private String email;
 
-    public CreateUserRequest(String login, String password) {
+    public CreateUserRequest(String login, String password, String email) {
         super(Void.class, PentagoApi.class);
         this.login = login;
         this.password = password;
+        this.email = email;
     }
 
     @Override
     public Void loadDataFromNetwork() throws Exception {
-        return getService().createUser(login, password);
+        return getService().createUser(login, password, email);
     }
 }

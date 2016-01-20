@@ -39,6 +39,8 @@ public class LogInActivity extends SpiceActivity {
         String login = loginEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         UserRequest userRequest = new UserRequest(login, password);
+
+        final Intent resIntent = new Intent(this, ShapeChooseActivity.class);
         getSpiceManager().execute(userRequest, new RequestListener<User>() {
             @Override
             public void onRequestFailure(SpiceException spiceException) {
@@ -47,28 +49,17 @@ public class LogInActivity extends SpiceActivity {
 
             @Override
             public void onRequestSuccess(User user) {
+                startActivity(resIntent);
                 Log.v("ASDASD", "SUCCESS!!!");
             }
         });
-        Intent resIntent = new Intent(this, ShapeChooseActivity.class);
-        startActivity(resIntent);
+
+
     }
 
     public void onCreateUser(View view){
-        String login = loginEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        CreateUserRequest userRequest = new CreateUserRequest(login, password);
-        getSpiceManager().execute(userRequest, new RequestListener<Void>() {
-            @Override
-            public void onRequestFailure(SpiceException spiceException) {
-
-            }
-
-            @Override
-            public void onRequestSuccess(Void aVoid) {
-                Log.v("ASDASD", "SUCCESS onCreate!!!");
-            }
-        });
+        Intent resIntent = new Intent(this, CreateUserActivity.class);
+        startActivity(resIntent);
     }
 
     public void onDeleteUser(View view) {

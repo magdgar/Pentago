@@ -57,6 +57,11 @@
             android:label="Pentago">
 
         </activity>
+        <activity android:name=".CreateUserActivity"
+            android:screenOrientation="portrait"
+            android:label="Pentago">
+
+        </activity>
 
         <service android:name=".network.PentagoSpiceRetrofitService"/>
     </application>

@@ -16,7 +16,7 @@ public interface PentagoApi {
     public User getUser(@Query("name") String name, @Query("password") String password);
 
     @PUT("/login")
-    public Void createUser(@Query("name") String name, @Query("password") String password);
+    public Void createUser(@Query("name") String name, @Query("password") String password, @Query("email") String email);
 
     @DELETE("/login")
     public Void deleteUser(@Query("name") String name, @Query("password") String password);
