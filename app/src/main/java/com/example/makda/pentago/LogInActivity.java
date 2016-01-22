@@ -5,6 +5,7 @@ package com.example.makda.pentago;
  */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,10 +15,9 @@ import android.view.View;
 
 import com.example.makda.pentago.model.User;
 import com.example.makda.pentago.network.SpiceActivity;
-import com.example.makda.pentago.network.requests.CreateUserRequest;
-import com.example.makda.pentago.network.requests.DeleteUserRequest;
-import com.example.makda.pentago.network.requests.UpdateUserRequest;
-import com.example.makda.pentago.network.requests.UserRequest;
+import com.example.makda.pentago.network.requests.userRequests.DeleteUserRequest;
+import com.example.makda.pentago.network.requests.userRequests.UpdateUserRequest;
+import com.example.makda.pentago.network.requests.userRequests.UserRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
@@ -26,6 +26,8 @@ public class LogInActivity extends SpiceActivity {
 
     private EditText loginEditText;
     private EditText passwordEditText;
+    public String login;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +35,11 @@ public class LogInActivity extends SpiceActivity {
         setContentView(R.layout.login_activity_layout);
         loginEditText = (EditText)findViewById(R.id.login_add);
         passwordEditText = (EditText)findViewById(R.id.password_add);
+        editor = getSharedPreferences("login", MODE_PRIVATE).edit();
     }
 
     public void onLogIn(View view){
-        String login = loginEditText.getText().toString();
+        login = loginEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         UserRequest userRequest = new UserRequest(login, password);
 
@@ -50,11 +53,11 @@ public class LogInActivity extends SpiceActivity {
             @Override
             public void onRequestSuccess(User user) {
                 startActivity(resIntent);
+                editor.putString("name", login);
+                editor.commit();
                 Log.v("ASDASD", "SUCCESS!!!");
             }
         });
-
-
     }
 
     public void onThanks(View view){

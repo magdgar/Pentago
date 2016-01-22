@@ -1,4 +1,4 @@
-package com.example.makda.pentago.network.requests;
+package com.example.makda.pentago.network.requests.userRequests;
 
 import com.example.makda.pentago.model.User;
 import com.example.makda.pentago.network.PentagoApi;

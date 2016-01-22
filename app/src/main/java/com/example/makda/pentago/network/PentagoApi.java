@@ -18,6 +18,12 @@ public interface PentagoApi {
     @PUT("/login")
     public Void createUser(@Query("name") String name, @Query("password") String password, @Query("email") String email);
 
+    @PUT("/shape")
+    public Void createShapeStatisticItem(@Query("login") String name, @Query("shape") String shape);
+
+    @PUT("/partner")
+    public Void createPartnerStatisticItem(@Query("login") String name, @Query("player") String player);
+
     @DELETE("/login")
     public Void deleteUser(@Query("name") String name, @Query("password") String password);
 
