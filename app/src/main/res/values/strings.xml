@@ -3,4 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Current login</item>
+        <item>Favirite partner</item>
+        <item>Favorite board</item>
+    </string-array>
 </resources>

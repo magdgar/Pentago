@@ -21,8 +21,14 @@ public interface PentagoApi {
     @PUT("/shape")
     public Void createShapeStatisticItem(@Query("login") String name, @Query("shape") String shape);
 
+    @GET("/shape")
+    public String getFavoriteBoard(@Query("login") String name);
+
     @PUT("/partner")
     public Void createPartnerStatisticItem(@Query("login") String name, @Query("player") String player);
+
+    @GET("/partner")
+    public String getFavoritePartner(@Query("login") String name);
 
     @DELETE("/login")
     public Void deleteUser(@Query("name") String name, @Query("password") String password);

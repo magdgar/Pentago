@@ -22,7 +22,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 
-public class LogInActivity extends SpiceActivity {
+public class LogInActivity extends SpiceActivity{
 
     private EditText loginEditText;
     private EditText passwordEditText;
@@ -67,6 +67,12 @@ public class LogInActivity extends SpiceActivity {
 
     public void onCreateUser(View view){
         Intent resIntent = new Intent(this, CreateUserActivity.class);
+        startActivity(resIntent);
+    }
+
+    public void onStatistics(View view){
+        Intent resIntent = new Intent(this, DrawerActivity.class);
+        resIntent.putExtra("login", login);
         startActivity(resIntent);
     }
 

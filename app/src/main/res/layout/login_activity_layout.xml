@@ -70,6 +70,16 @@
             android:layout_below="@+id/password"
             android:textSize="22sp"
             android:onClick="onCreateUser"/>
+
+        <Button android:id="@+id/statisctics_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stats"
+            android:layout_marginTop="20dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/thanks_button"
+            android:textSize="22sp"
+            android:onClick="onStatistics"/>
     </RelativeLayout>
 
 </RelativeLayout>

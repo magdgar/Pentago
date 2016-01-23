@@ -57,6 +57,11 @@
             android:label="Pentago">
 
         </activity>
+        <activity android:name=".DrawerActivity"
+            android:screenOrientation="portrait"
+            android:label="Pentago">
+
+        </activity>
         <activity android:name=".CreateUserActivity"
             android:screenOrientation="portrait"
             android:label="Pentago">
