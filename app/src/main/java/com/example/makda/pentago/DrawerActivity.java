@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.makda.pentago.network.SpiceActivity;
 import com.example.makda.pentago.network.requests.FavoriteBoardRequest;
 import com.example.makda.pentago.network.requests.FavoritePartnerRequest;
+import com.example.makda.pentago.network.requests.WonStatsRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
@@ -38,7 +39,6 @@ public class DrawerActivity extends SpiceActivity {
 
             @Override
             public void onRequestSuccess(String s) {
-                Log.d("reqResString", s);
                 ((TextView) findViewById(R.id.enemy_text)).setText(s);
             }
         });
@@ -52,8 +52,21 @@ public class DrawerActivity extends SpiceActivity {
 
             @Override
             public void onRequestSuccess(String s) {
-                Log.d("reqResString", s);
                 ((TextView) findViewById(R.id.board_text)).setText(s);
+            }
+        });
+
+        WonStatsRequest wonStatsRequest = new WonStatsRequest(login);
+        getSpiceManager().execute(wonStatsRequest, new RequestListener<Double>() {
+            @Override
+            public void onRequestFailure(SpiceException spiceException) {
+                ((TextView) findViewById(R.id.won_stats_text)).setText("---");
+            }
+
+            @Override
+            public void onRequestSuccess(Double d) {
+                d = d*100;
+                ((TextView) findViewById(R.id.won_stats_text)).setText(String.valueOf(d.intValue()) + " %");
             }
         });
     }

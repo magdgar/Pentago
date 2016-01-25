@@ -13,27 +13,30 @@ import retrofit.http.Query;
  */
 public interface PentagoApi {
     @GET("/login")
-    public User getUser(@Query("name") String name, @Query("password") String password);
+    Boolean getUser(@Query("name") String name, @Query("password") String password);
 
     @PUT("/login")
-    public Void createUser(@Query("name") String name, @Query("password") String password, @Query("email") String email);
+    Void createUser(@Query("name") String name, @Query("password") String password, @Query("email") String email);
 
     @PUT("/shape")
-    public Void createShapeStatisticItem(@Query("login") String name, @Query("shape") String shape);
+    Void createShapeStatisticItem(@Query("login") String name, @Query("shape") String shape);
 
     @GET("/shape")
-    public String getFavoriteBoard(@Query("login") String name);
+    String getFavoriteBoard(@Query("login") String name);
 
     @PUT("/partner")
-    public Void createPartnerStatisticItem(@Query("login") String name, @Query("player") String player);
+    Void createPartnerStatisticItem(@Query("login") String name, @Query("player") String player);
 
     @GET("/partner")
-    public String getFavoritePartner(@Query("login") String name);
+    String getFavoritePartner(@Query("login") String name);
 
     @DELETE("/login")
-    public Void deleteUser(@Query("name") String name, @Query("password") String password);
+     Void deleteUser(@Query("name") String name, @Query("password") String password);
 
     @POST("/login")
-    public Void updatePassword(@Query("name") String name, @Query("password") String password,
+    Void updatePassword(@Query("name") String name, @Query("password") String password,
                                @Query("new_password") String newPassword);
+
+    @GET("/wonstatistic")
+    Double getWonStats(@Query("name") String name);
 }

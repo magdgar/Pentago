@@ -7,18 +7,18 @@ import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;
 /**
  * Created by Makda on 2016-01-18.
  */
-public class UserRequest extends RetrofitSpiceRequest<User, PentagoApi> {
+public class UserRequest extends RetrofitSpiceRequest<Boolean, PentagoApi> {
     private String name;
     private String password;
 
     public UserRequest(String name, String password) {
-        super(User.class, PentagoApi.class);
+        super(Boolean.class, PentagoApi.class);
         this.name = name;
         this.password = password;
     }
 
     @Override
-    public User loadDataFromNetwork() throws Exception {
+    public Boolean loadDataFromNetwork() throws Exception {
         return getService().getUser(name, password);
     }
 }
