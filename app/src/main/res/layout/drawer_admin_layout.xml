@@ -13,10 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:textSize="30sp"
-        android:text="login: "/>
+        android:text="admins: "/>
 
     <TextView
-        android:id="@+id/login_text"
+        android:id="@+id/admins_text"
         android:layout_toRightOf="@+id/text1"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -29,59 +29,56 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:textSize="30sp"
-        android:text="favorite enemy: "/>
+        android:text="best players: "/>
 
     <TextView
-        android:id="@+id/enemy_text"
-        android:layout_below="@+id/text1"
-        android:layout_toRightOf="@+id/text2"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:textSize="30sp" />
+        android:id="@+id/best_players_text"
+        android:layout_below="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/text3"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@+id/text2"
+        android:layout_below="@+id/best_players_text"
         android:textSize="30sp"
-        android:text="favorite board: "/>
+        android:text="enemys: "/>
 
     <TextView
-        android:id="@+id/board_text"
-        android:layout_below="@+id/text2"
-        android:layout_toRightOf="@+id/text2"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:textSize="30sp" />
+        android:id="@+id/enemys_text"
+        android:layout_below="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@+id/text3"
+        android:layout_below="@+id/enemys_text"
         android:textSize="30sp"
-        android:text="won: "/>
+        android:text="users + badges: "/>
 
     <TextView
-        android:id="@+id/won_stats_text"
-        android:layout_below="@+id/text3"
-        android:layout_toRightOf="@+id/text4"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:textSize="30sp" />
+        android:id="@+id/user_badges_text"
+        android:layout_below="@+id/text4"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/text5"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@+id/text4"
+        android:layout_below="@+id/user_badges_text"
         android:textSize="30sp"
         android:text="last game times: "/>
 
     <TextView
         android:id="@+id/time_text"
-        android:layout_below="@+id/text5"
+        android:layout_below="@+id/user_badges_text"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:textSize="30sp" />

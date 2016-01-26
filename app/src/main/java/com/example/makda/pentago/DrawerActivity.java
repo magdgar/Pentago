@@ -1,18 +1,16 @@
 package com.example.makda.pentago;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.widget.ListView;
 import android.widget.TextView;
 import com.example.makda.pentago.network.SpiceActivity;
-import com.example.makda.pentago.network.requests.FavoriteBoardRequest;
-import com.example.makda.pentago.network.requests.FavoritePartnerRequest;
-import com.example.makda.pentago.network.requests.WonStatsRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.FavoriteBoardRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.FavoritePartnerRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.WonStatsRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.TimeStatsRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
+
+import java.util.List;
 
 
 /**
@@ -67,6 +65,19 @@ public class DrawerActivity extends SpiceActivity {
             public void onRequestSuccess(Double d) {
                 d = d*100;
                 ((TextView) findViewById(R.id.won_stats_text)).setText(String.valueOf(d.intValue()) + " %");
+            }
+        });
+
+        TimeStatsRequest timeStatsRequest = new TimeStatsRequest(login);
+        getSpiceManager().execute(timeStatsRequest, new RequestListener<List>() {
+            @Override
+            public void onRequestFailure(SpiceException spiceException) {
+                ((TextView) findViewById(R.id.time_text)).setText("---");
+            }
+
+            @Override
+            public void onRequestSuccess(List list) {
+                ((TextView) findViewById(R.id.time_text)).setText(list.toString());
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.example.makda.pentago;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,8 +10,7 @@ import com.example.makda.pentago.draw_activity.StartDraw;
 import com.example.makda.pentago.draw_activity.StartDrawAIGame;
 import com.example.makda.pentago.draw_activity.StartDrawRandoxGame;
 import com.example.makda.pentago.network.SpiceActivity;
-import com.example.makda.pentago.network.requests.CreatePartnerStatisticItemRequest;
-import com.example.makda.pentago.network.requests.CreateShapeStatisticItemRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.CreatePartnerStatisticItemRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 

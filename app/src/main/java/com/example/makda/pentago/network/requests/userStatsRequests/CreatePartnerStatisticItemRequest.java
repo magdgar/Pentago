@@ -1,4 +1,4 @@
-package com.example.makda.pentago.network.requests;
+package com.example.makda.pentago.network.requests.userStatsRequests;
 
 import com.example.makda.pentago.network.PentagoApi;
 import com.octo.android.robospice.request.retrofit.RetrofitSpiceRequest;

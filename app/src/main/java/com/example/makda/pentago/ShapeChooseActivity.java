@@ -7,10 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.makda.pentago.draw_activity.StartDrawTriangleGame;
-import com.example.makda.pentago.model.User;
 import com.example.makda.pentago.network.SpiceActivity;
-import com.example.makda.pentago.network.requests.CreateShapeStatisticItemRequest;
-import com.example.makda.pentago.network.requests.userRequests.UserRequest;
+import com.example.makda.pentago.network.requests.userStatsRequests.CreateShapeStatisticItemRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 

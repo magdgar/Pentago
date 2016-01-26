@@ -2,6 +2,8 @@ package com.example.makda.pentago.network;
 
 import com.example.makda.pentago.model.User;
 
+import java.util.List;
+
 import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;
@@ -39,4 +41,19 @@ public interface PentagoApi {
 
     @GET("/wonstatistic")
     Double getWonStats(@Query("name") String name);
+
+    @GET("/gametimestats")
+    List<Double> getTimeStats(@Query("name") String name);
+
+    @GET("/admins")
+    List getAdmins();
+
+    @GET("/bestPlayers")
+    List bestPlayers();
+
+    @GET("/enemys")
+    List enemys();
+
+    @GET("/usersbadge")
+    List userBagde();
 }

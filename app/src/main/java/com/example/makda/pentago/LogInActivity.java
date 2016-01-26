@@ -74,11 +74,15 @@ public class LogInActivity extends SpiceActivity{
     }
 
     public void onStatistics(View view){
-        //if(!isAdmin) {
+        if(!isAdmin) {
             Intent resIntent = new Intent(this, DrawerActivity.class);
             resIntent.putExtra("login", login);
             startActivity(resIntent);
-        //}
+        }else{
+            Intent resIntent = new Intent(this, DrawerAdminActivity.class);
+            resIntent.putExtra("login", login);
+            startActivity(resIntent);
+        }
     }
 
     public void onDeleteUser(View view) {
