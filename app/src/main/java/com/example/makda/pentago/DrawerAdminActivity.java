@@ -1,6 +1,7 @@
 package com.example.makda.pentago;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.makda.pentago.network.SpiceActivity;
@@ -74,5 +75,11 @@ public class DrawerAdminActivity extends SpiceActivity {
                 ((TextView) findViewById(R.id.user_badges_text)).setText(list.toString());
             }
         });
+
+
+        EditText countryEditText = (EditText)findViewById(R.id.country_edit_text);
+        String country = String.valueOf(countryEditText.getText());
+
+       //TODO UserCountryRequest
     }
 }
