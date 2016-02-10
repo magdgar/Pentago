@@ -37,6 +37,7 @@
             android:layout_toRightOf="@+id/password"
             android:layout_toEndOf="@+id/password"
             android:layout_below="@+id/login_add"
+            android:inputType="textPassword"
             android:layout_margin="10dp"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>

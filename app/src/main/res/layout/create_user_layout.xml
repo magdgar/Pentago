@@ -37,6 +37,7 @@
         <EditText android:id="@+id/password_add"
             android:layout_toRightOf="@+id/password"
             android:layout_toEndOf="@+id/password"
+            android:inputType="textPassword"
             android:layout_below="@+id/login_add"
             android:layout_margin="10dp"
             android:layout_width="100dp"

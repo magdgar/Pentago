@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.makda.pentago.network.SpiceActivity;
 import com.example.makda.pentago.network.requests.userRequests.CreateUserRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
+
+import static com.example.makda.pentago.Utils.toMD5;
 
 /**
  * Created by Makda on 2016-01-20.
@@ -34,23 +37,20 @@ public class CreateUserActivity extends SpiceActivity {
 
     public void onCreateUser(View view){
         final String login = loginEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String email = emailEditText.getText().toString();
+        final String password = toMD5(passwordEditText.getText().toString(), login);
+        final String email = emailEditText.getText().toString();
         CreateUserRequest userRequest = new CreateUserRequest(login, password, email);
-        final Intent resIntent = new Intent(this, ShapeChooseActivity.class);
         getSpiceManager().execute(userRequest, new RequestListener<Void>() {
             @Override
             public void onRequestFailure(SpiceException spiceException) {
-
+                Toast.makeText(CreateUserActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onRequestSuccess(Void aVoid) {
                 prefs.putString("name", login);
                 prefs.commit();
-
-                startActivity(resIntent);
-                Log.v("ASDASD", "SUCCESS onCreate!!!");
+                Toast.makeText(CreateUserActivity.this, "Checkout your email", Toast.LENGTH_LONG).show();
             }
         });
     }

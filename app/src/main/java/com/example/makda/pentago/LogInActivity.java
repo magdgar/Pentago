@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.makda.pentago.model.User;
 import com.example.makda.pentago.network.SpiceActivity;
@@ -20,6 +21,8 @@ import com.example.makda.pentago.network.requests.userRequests.UpdateUserRequest
 import com.example.makda.pentago.network.requests.userRequests.UserRequest;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
+
+import static com.example.makda.pentago.Utils.toMD5;
 
 
 public class LogInActivity extends SpiceActivity{
@@ -42,14 +45,14 @@ public class LogInActivity extends SpiceActivity{
 
     public void onLogIn(View view){
         login = loginEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+        String password =  toMD5(passwordEditText.getText().toString(), login);
         UserRequest userRequest = new UserRequest(login, password);
 
         final Intent resIntent = new Intent(this, ShapeChooseActivity.class);
         getSpiceManager().execute(userRequest, new RequestListener<Boolean>() {
             @Override
             public void onRequestFailure(SpiceException spiceException) {
-                spiceException.printStackTrace();
+                Toast.makeText(LogInActivity.this, "User inactive, confirm or create your account", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -58,7 +61,6 @@ public class LogInActivity extends SpiceActivity{
                 LogInActivity.isAdmin = isAdmin;
                 editor.putString("name", login);
                 editor.commit();
-                Log.v("ASDASD", "SUCCESS!!!");
             }
         });
     }
